@@ -4,22 +4,14 @@ const User = require("../models/User");
 
 // Create a new lost pet notice
 router.post("/", async (req, res) => {
-  const {
-    name,
-    description,
-    lastSeenAt,
-    lastSeenNear,
-    imgUrl,
-    searchers,
-    found,
-  } = req.body;
+  const { name, description, state, city, imgUrl, searchers, found } = req.body;
 
   const notice = new Notice({
     name,
     description,
-    lastSeenAt,
-    lastSeenNear,
-    location,
+    lastSeen,
+    state,
+    city,
     imgUrl,
     searchers,
     found,
@@ -36,6 +28,12 @@ router.post("/", async (req, res) => {
 });
 
 // Get lost pet notices in the area
+router.get("/:state/:county", (req, res) => {
+  try {
+    const stateNotices = await Notice.find({ state: req.params.state });
+    const countyNotices = await Promise.all();
+  } catch (error) {}
+});
 
 // Get lost pet notices that user is following
 

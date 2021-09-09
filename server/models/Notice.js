@@ -10,13 +10,13 @@ const NoticeSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  lastSeenAt: {
+  lastSeen: {
     type: Date,
   },
-  lastSeenNear: {
+  state: {
     type: String,
   },
-  location: {
+  city: {
     type: String,
   },
   imgUrl: {
