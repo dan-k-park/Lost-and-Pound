@@ -1,15 +1,22 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const http = require("http").Server(app);
 const io = require("socket.io")(http);
-
-// Routes
+const mongoose = require("mongoose");
+const helmet = require("helmet");
 
 // MongoDB
-const mongoose = require("mongoose");
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true }, () => {
+  console.log("Connected to MongoDB");
+});
 
-// Helpers
-const helmet = require("helmet");
+// Middleware
+app.use(express.json());
+app.use(helmet());
+
+// Routes
 
 app.listen(5000, () => {
   console.log("Running on port 5000");
