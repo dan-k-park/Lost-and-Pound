@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
 });
 
 // Get lost pet notices in the area
-router.get("/:state/:county", (req, res) => {
+router.get("/:state/:county", async (req, res) => {
   try {
     const stateNotices = await Notice.find({ state: req.params.state });
     const countyNotices = await Promise.all();
@@ -40,3 +40,5 @@ router.get("/:state/:county", (req, res) => {
 // Update lost pet notice
 
 // Delete lost pet notice
+
+module.exports = router;
