@@ -35,8 +35,7 @@ app.use(passport.session());
 // Routes
 app.use("/api/users", userRoute);
 app.use("/api/notices", noticeRoute);
-// app.use("/api/auth", authRoute);
-require("./routes/auth")(app);
+app.use("/auth", authRoute);
 
 app.listen(5000, () => {
   console.log("Running on port 5000");
