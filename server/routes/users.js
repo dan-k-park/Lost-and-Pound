@@ -3,18 +3,16 @@ const User = require("../models/User");
 const router = require("express").Router();
 
 // Get a user
-router.get("/", async (req, res) => {
-  const userId = req.query.userId;
-  const username = req.query.username;
+router.get("/:id", async (req, res) => {
+  const userId = req.params.id;
 
   try {
-    const user = userId
-      ? await User.findById(userId)
-      : await User.findOne({ username: username });
+    const user = await User.findById(userId);
     const { googleId, email, ...other } = user._doc;
     res.status(200).json(other);
   } catch (error) {
-    res.status(500).json(err);
+    console.error(error);
+    res.status(500).json(error);
   }
 });
 
@@ -22,7 +20,7 @@ router.get("/", async (req, res) => {
 router.put("/friends/add/:userId", async (req, res) => {
   // Make sure users aren't adding themselves as friends
   if (req.body.userId !== req.params.id) {
-    const pendingFriend = await User.findById(req.params.id);
+    const pendingFriend = await User.findById(req.params.userId);
     const currentUser = await User.findById(req.body.userId);
     try {
       if (!pendingFriend.friends.includes(req.body.userId)) {
