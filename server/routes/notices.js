@@ -27,7 +27,12 @@ router.post("/", requireUnique, async (req, res) => {
     searchers: [req.body.userId],
   });
 
+  const currentUser = User.findById(req.body.userId);
+
   try {
+    await currentUser.updateOne({
+      $push: { searchingFor: notice._id.toString() },
+    });
     await notice.save();
     res.status(201).json(notice);
   } catch (error) {
@@ -98,16 +103,18 @@ router.put("/search/:id", async (req, res) => {
 });
 
 // Get a feed of lost pet notices that user is following
-router.get("/feed", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
-    const currentUser = await User.findById(req.user.id);
-    const userNotices = await Post.find({ _user: req.user.id });
-    const searchingFor = await Promise.all(
-      currentUser.searchingFor.map((noticeId) => {
-        return Notice.find({});
-      })
-    );
-  } catch (error) {}
+    const currentUser = await User.findById(req.body.userId);
+    const userSearchingNotices = await Notice.find({
+      searchers: { $in: [currentUser._id.toString()] },
+    });
+
+    res.status(200).json(userSearchingNotices);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
 
 // Update lost pet notice
