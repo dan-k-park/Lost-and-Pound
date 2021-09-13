@@ -11,13 +11,21 @@ const options = {
 };
 const geocoder = NodeGeocoder(options);
 
+const capitalize = (string) => {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+};
+
 // Create a new lost pet notice
 router.post("/", requireUnique, async (req, res) => {
   const { city, state } = req.body;
   const county = (await geocoder.geocode(`${city} + ${state}`))[0]
     .administrativeLevels.level2long;
 
-  const notice = new Notice({ ...req.body, county });
+  const notice = new Notice({
+    ...req.body,
+    county,
+    searchers: [req.body.userId],
+  });
 
   try {
     await notice.save();
@@ -28,12 +36,34 @@ router.post("/", requireUnique, async (req, res) => {
   }
 });
 
-// Get lost pet notices in the area
+// Get lost pet notices by county
 router.get("/:state/:county", async (req, res) => {
+  const { state, county } = req.params;
   try {
-    const stateNotices = await Notice.find({ state: req.params.state });
-    const countyNotices = await Promise.all();
-  } catch (error) {}
+    const notices = await Notice.find({
+      state: capitalize(state),
+      county: `${capitalize(county)} County`,
+    });
+    res.status(200).json(notices);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
+
+// Get lost pet notices in the city
+router.get("/:state/:county/:city", async (req, res) => {
+  const { city, county } = req.params;
+  try {
+    const notices = await Notice.find({
+      city: capitalize(city),
+      county: `${capitalize(county)} County`,
+    });
+    res.status(200).json(notices);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
 });
 
 // Get lost pet notice by id
