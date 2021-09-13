@@ -77,15 +77,18 @@ router.get("/:id", async (req, res) => {
   }
 });
 
-// Search for a pet (add to searchingFor array)
-router.put("/:id", async (req, res) => {
+// Search/stop searching for a pet (add/remove in searchingFor array)
+router.put("/search/:id", async (req, res) => {
+  const currentUser = User.findById(req.body.userId);
   try {
     const notice = await Notice.findById(req.params.id);
     if (!notice.searchers.includes(req.body.userId)) {
       await notice.updateOne({ $push: { searchers: req.body.userId } });
+      await currentUser.updateOne({ $push: { searchingFor: req.params.id } });
       res.status(200).json("Searching for this pet.");
     } else {
       await notice.updateOne({ $pull: { searchers: req.body.userId } });
+      await currentUser.updateOne({ $pull: { searchingFor: req.params.id } });
       res.status(200).json("No longer searching for this pet.");
     }
   } catch (error) {
@@ -108,7 +111,35 @@ router.get("/feed", async (req, res) => {
 });
 
 // Update lost pet notice
+router.put("/:id", async (req, res) => {
+  const notice = await Notice.findById(req.params.id);
+  if (notice.userId === req.body.userId) {
+    await notice.updateOne({ $set: req.body });
+    res.status(200).json("Notice has been updated.");
+  } else {
+    res.status(403).json("Cannot update another user's notice.");
+  }
+  try {
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 // Delete lost pet notice
+router.delete("/:id", async (req, res) => {
+  const notice = await Notice.findById(req.params.id);
+  try {
+    if (notice.userId === req.body.userId) {
+      await notice.deleteOne({ $set: req.body });
+      res.status(200).json("Notice has been deleted.");
+    } else {
+      res.status(403).json("Cannot delete another user's notice.");
+    }
+  } catch (error) {
+    console.error(error);
+    res.status(500).json(error);
+  }
+});
 
 module.exports = router;
