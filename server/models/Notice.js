@@ -1,8 +1,16 @@
 const mongoose = require("mongoose");
 
 const NoticeSchema = new mongoose.Schema({
-  _user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  userId: {
+    type: String,
+    required: true,
+  },
+  // _user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   name: {
+    type: String,
+    required: true,
+  },
+  species: {
     type: String,
     required: true,
   },
@@ -17,6 +25,9 @@ const NoticeSchema = new mongoose.Schema({
     type: String,
   },
   city: {
+    type: String,
+  },
+  county: {
     type: String,
   },
   imgUrl: {

@@ -7,6 +7,7 @@ const UserSchema = new Schema({
   email: String,
   googleId: String,
   friends: [],
+  searchingFor: [],
 });
 
 module.exports = mongoose.model("User", UserSchema);
