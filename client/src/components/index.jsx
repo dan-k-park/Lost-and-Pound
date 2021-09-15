@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {
@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 
 const Container = styled.div`
-  height: 50px;
+  height: 60px;
   width: 100%;
   background-color: #1da1f2;
   display: flex;
@@ -23,20 +23,34 @@ const LogoContainer = styled.div`
   flex: 3;
 `;
 
-const Logo = styled.span`
-  font-size: 24px;
-  margin-left: 20px;
-  font-weight: bold;
+const Large = styled.h4`
+  display: inline-block;
   color: #fff;
-  cursor: pointer;
+  @media only Screen and (max-width: 640px) {
+    display: none;
+  }
+`;
+
+const Small = styled.h4`
+  display: none;
+  color: #fff;
+  @media only Screen and (max-width: 640px) {
+    display: inline-block;
+  }
+`;
+
+const Logo = styled(Link)`
+  margin-left: 20px;
 `;
 
 const SearchContainer = styled.div`
-  flex: 5;
+  flex: 6;
+  display: flex;
+  justify-content: center;
 `;
 
 const SearchBar = styled.div`
-  width: 100%;
+  width: 80%;
   height: 30px;
   background-color: #fff;
   border-radius: 30px;
@@ -54,15 +68,17 @@ const SearchInput = styled.input`
 `;
 
 const NavLinkContainer = styled.div`
-  flex: 4;
+  flex: 3;
   display: flex;
-  align-items: center;'
-  justify-content: space-around;
+  align-items: center;
+  justify-content: flex-end;
+  margin-right: 25px;
   color: #fff;
 `;
 
 const NavIconContainer = styled.div`
   display: flex;
+  margin-right: 25px;
 `;
 
 const NavIcon = styled.div`
@@ -79,33 +95,30 @@ const IconBadge = styled.span`
   color: #fff;
   position: absolute;
   top: -5px;
-  right: -5px;
+  right: -3px;
   display: flex;
   justify-content: center;
   font-size: 12px;
 `;
 
 const UserImg = styled.img`
-  width: 32px;
-  height: 32px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
 `;
 
-const NavLink = styled.span`
-  margin-right: 10px;
-  font-size: 14px;
-  cursor: pointer;
-`;
-
 const Navbar = () => {
+  const [searchClicked, setSearchClicked] = useState(false);
+
   return (
     <Container>
       <LogoContainer>
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <Logo>Lost and Pound</Logo>
-        </Link>
+        <Logo as="" to="/" style={{ textDecoration: "none" }}>
+          <Large>Lost and Pound</Large>
+          <Small>L&P</Small>
+        </Logo>
       </LogoContainer>
       <SearchContainer>
         <SearchBar>
@@ -114,29 +127,25 @@ const Navbar = () => {
         </SearchBar>
       </SearchContainer>
       <NavLinkContainer>
-        <div>
-          <NavLink>Homepage</NavLink>
-          <NavLink>Feed</NavLink>
-        </div>
         <NavIconContainer>
           <NavIcon>
-            <MdPerson />
+            <MdPerson style={{ fontSize: "28px" }} />
             <IconBadge>1</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdChatBubble />
+            <MdChatBubble style={{ fontSize: "28px" }} />
             <IconBadge>2</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdNotifications />
+            <MdNotifications style={{ fontSize: "28px" }} />
             <IconBadge>3</IconBadge>
           </NavIcon>
         </NavIconContainer>
-        <Link>
-          {/* <UserImg
+        <Link to="/">
+          <UserImg
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture"
-          /> */}
+          />
         </Link>
       </NavLinkContainer>
     </Container>

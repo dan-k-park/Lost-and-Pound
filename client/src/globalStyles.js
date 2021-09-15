@@ -3,7 +3,14 @@ import { createGlobalStyle } from "styled-components";
 export const GlobalStyle = createGlobalStyle`
 html {
   scroll-behavior: smooth;
-},
+}
+*,*::before,*::after{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family: Helvetica
+}
+
 body: {
   margin:0;
   padding:0;

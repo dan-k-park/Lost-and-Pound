@@ -10,15 +10,17 @@ import Home from "./pages/Home";
 
 function App() {
   return (
-    <Router>
+    <>
       <GlobalStyle />
-      <Switch>
+      <Router>
         <Navbar />
-        <Route exact path="/">
-          <Home />
-        </Route>
-      </Switch>
-    </Router>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </>
   );
 }
 
