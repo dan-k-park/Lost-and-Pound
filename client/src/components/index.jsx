@@ -57,7 +57,7 @@ const SearchBar = styled.div`
   width: 80%;
   height: 30px;
   background-color: #fff;
-  border-radius: 30px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
   @media only Screen and (max-width: 640px) {

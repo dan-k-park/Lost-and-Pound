@@ -6,6 +6,7 @@ import Hamster from "./FilterIcons/Hamster.jsx";
 import Jellyfish from "./FilterIcons/Jellyfish.jsx";
 import Rabbit from "./FilterIcons/Rabbit.jsx";
 import Tortoise from "./FilterIcons/Tortoise.jsx";
+import { MdMap, MdLocationCity, MdLocationOn } from "react-icons/md";
 
 const Container = styled.div`
   flex: 2.5;
@@ -51,10 +52,40 @@ const FilterDivider = styled.hr`
   margin: 20px 0;
 `;
 
-const SearchingForList = styled.ul`
+const LocationWrapper = styled.div`
   padding: 0;
   margin: 0;
-  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+`;
+
+const CityStateBar = styled.div`
+  width: 80%;
+  height: 30px;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+`;
+
+const CityStateInput = styled.input`
+  border: none;
+  width: 70%;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const ApplyButton = styled.button`
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-size: 18px;
+  width: 40%;
 `;
 
 const Filters = () => {
@@ -102,9 +133,22 @@ const Filters = () => {
         </FiltersList>
         <FilterDivider />
         <Title>Location</Title>
-        <SearchingForList>
-          <div>Doug</div>
-        </SearchingForList>
+        <LocationWrapper>
+          <CityStateBar>
+            <MdLocationCity style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="City" />
+          </CityStateBar>
+          <span style={{ marginBottom: "12px" }}>or</span>
+          <CityStateBar>
+            <MdLocationOn style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="County" />
+          </CityStateBar>
+          <CityStateBar>
+            <MdMap style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="State" />
+          </CityStateBar>
+        </LocationWrapper>
+        <ApplyButton>Apply</ApplyButton>
       </Wrapper>
     </Container>
   );
