@@ -6,6 +6,7 @@ import {
   MdSearch,
   MdNotifications,
   MdChatBubble,
+  MdCancel,
 } from "react-icons/md";
 
 const Container = styled.div`
@@ -23,7 +24,7 @@ const LogoContainer = styled.div`
   flex: 3;
 `;
 
-const Large = styled.h4`
+const Large = styled.h3`
   display: inline-block;
   color: #fff;
   @media only Screen and (max-width: 640px) {
@@ -31,7 +32,7 @@ const Large = styled.h4`
   }
 `;
 
-const Small = styled.h4`
+const Small = styled.h3`
   display: none;
   color: #fff;
   @media only Screen and (max-width: 640px) {
@@ -47,6 +48,9 @@ const SearchContainer = styled.div`
   flex: 6;
   display: flex;
   justify-content: center;
+  @media only Screen and (max-width: 640px) {
+    display: ${(props) => (props.searchOpen ? "flex" : "none")};
+  }
 `;
 
 const SearchBar = styled.div`
@@ -56,6 +60,9 @@ const SearchBar = styled.div`
   border-radius: 30px;
   display: flex;
   align-items: center;
+  @media only Screen and (max-width: 640px) {
+    width: 100%;
+  }
 `;
 
 const SearchInput = styled.input`
@@ -64,6 +71,23 @@ const SearchInput = styled.input`
 
   &:focus {
     outline: none;
+  }
+`;
+
+const SearchButton = styled(MdSearch)`
+  display: none;
+  @media only Screen and (max-width: 640px) {
+    display: block;
+    font-size: 28px;
+    margin-right: 12px;
+    color: #fff;
+  }
+`;
+
+const CancelButton = styled(MdCancel)`
+  display: none;
+  @media only Screen and (max-width: 640px) {
+    display: inline-block;
   }
 `;
 
@@ -79,6 +103,12 @@ const NavLinkContainer = styled.div`
 const NavIconContainer = styled.div`
   display: flex;
   margin-right: 25px;
+
+  @media only Screen and (max-width: 640px) {
+    display: ${(props) => (props.searchOpen ? "none" : "flex")};
+    margin-left: 10%;
+    margin-right: 5%;
+  }
 `;
 
 const NavIcon = styled.div`
@@ -110,7 +140,7 @@ const UserImg = styled.img`
 `;
 
 const Navbar = () => {
-  const [searchClicked, setSearchClicked] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
 
   return (
     <Container>
@@ -120,14 +150,16 @@ const Navbar = () => {
           <Small>L&P</Small>
         </Logo>
       </LogoContainer>
-      <SearchContainer>
+      <SearchContainer searchOpen={searchOpen}>
         <SearchBar>
-          <MdSearch />
+          <MdSearch style={{ marginLeft: "12px" }} />
           <SearchInput placeholder="Search Here" />
+          <CancelButton onClick={() => setSearchOpen(false)} />
         </SearchBar>
       </SearchContainer>
       <NavLinkContainer>
-        <NavIconContainer>
+        <NavIconContainer searchOpen={searchOpen}>
+          <SearchButton onClick={() => setSearchOpen(true)} />
           <NavIcon>
             <MdPerson style={{ fontSize: "28px" }} />
             <IconBadge>1</IconBadge>
