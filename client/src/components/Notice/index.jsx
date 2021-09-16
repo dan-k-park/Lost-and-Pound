@@ -47,6 +47,19 @@ const Content = styled.div`
   margin: 20px 0;
 `;
 
+const InfoList = styled.ul`
+  padding: 0;
+  margin: 0;
+  list-style: none;
+`;
+
+const InfoListItem = styled.li`
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 10px;
+`;
+
 const Description = styled.span``;
 
 const PetPicture = styled.img`
@@ -58,8 +71,7 @@ const PetPicture = styled.img`
 
 const Footer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: space-between;
+  justify-content: flex-end;
 `;
 
 const SearchersWrapper = styled.div`
@@ -95,6 +107,12 @@ const Notice = () => {
           </OwnerAvatarContainer>
         </Header>
         <Content>
+          <InfoList>
+            <InfoListItem>Name: Steve French</InfoListItem>
+            <InfoListItem>Species: Cat</InfoListItem>
+            <InfoListItem>Last Seen on: 2-3-21</InfoListItem>
+            <InfoListItem>Last Seen near: 4th Ave</InfoListItem>
+          </InfoList>
           <Description>
             Lost my cat. He's a big cat. Very friendly. Does not bite. Might
             bite.

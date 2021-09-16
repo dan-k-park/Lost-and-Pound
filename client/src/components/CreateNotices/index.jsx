@@ -1,6 +1,11 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { MdCancel, MdPermMedia } from "react-icons/md";
+import {
+  MdCancel,
+  MdPermMedia,
+  MdDateRange,
+  MdAddLocation,
+} from "react-icons/md";
 
 const Container = styled.div`
   width: 100%;
@@ -26,9 +31,18 @@ const UserAvatar = styled.img`
   object-fit: cover;
 `;
 
-const NoticeInput = styled.input`
+const Description = styled.textarea`
   border: none;
   width: 80%;
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const Name = styled.input`
+  border: none;
+  width: 40%;
 
   &:focus {
     outline: none;
@@ -71,9 +85,13 @@ const Option = styled.label`
   cursor: pointer;
 `;
 
-const ImageIcon = styled(MdPermMedia)`
-  font-size: 18px;
-  margin-right: 3px;
+const OptionText = styled.span`
+  font-size: clamp(11px, 1.1vw, 14px);
+  font-weight: 500;
+
+  @media only Screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const CreateButton = styled.button`
@@ -89,6 +107,7 @@ const CreateButton = styled.button`
 
 const CreateNotice = () => {
   const description = useRef();
+  const name = useRef();
   const [file, setFile] = useState(null);
 
   return (
@@ -99,7 +118,8 @@ const CreateNotice = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture."
           />
-          <NoticeInput placeholder="Describe your pet here" ref={description} />
+          <Name placeholder="Pet name" ref={name} />
+          <Description placeholder="Describe your pet here" ref={description} />
         </InputSection>
         <hr style={{ margin: "20px" }} />
         {file && (
@@ -114,7 +134,14 @@ const CreateNotice = () => {
         <Form>
           <Options>
             <Option htmlFor="file">
-              <ImageIcon />
+              <MdPermMedia
+                style={{
+                  fontSize: "18px",
+                  marginRight: "3px",
+                  color: "tomato",
+                }}
+              />
+              <OptionText>Photo</OptionText>
               <input
                 type="file"
                 style={{ display: "none" }}
@@ -122,6 +149,19 @@ const CreateNotice = () => {
                 accept=".png,.jpeg,.jpg"
                 onChange={(e) => setFile(e.target.files[0])}
               />
+            </Option>
+            <Option>
+              <MdDateRange
+                style={{ fontSize: "18px", marginRight: "3px", color: "blue" }}
+              />
+              <OptionText>Last Seen</OptionText>
+              <input type="date" style={{ display: "none" }} />
+            </Option>
+            <Option>
+              <MdAddLocation
+                style={{ fontSize: "18px", marginRight: "3px", color: "green" }}
+              />
+              <OptionText>Location</OptionText>
             </Option>
           </Options>
           <CreateButton type="submit">Create Notice</CreateButton>
