@@ -26,6 +26,9 @@ const NoticeSchema = new mongoose.Schema({
   city: {
     type: String,
   },
+  street: {
+    type: String,
+  },
   county: {
     type: String,
   },

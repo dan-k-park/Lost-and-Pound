@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Notice from "../Notice";
-import CreateNotice from "../CreateNotices";
+import CreateNotice from "../CreateNotice";
 
 const Container = styled.div`
   flex: 5.5;

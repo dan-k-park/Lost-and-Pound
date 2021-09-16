@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   padding: 10px;
 `;
 
-const InputSection = styled.div`
+const TopHalf = styled.div`
   display: flex;
   align-items: center;
 `;
@@ -29,6 +29,47 @@ const UserAvatar = styled.img`
   border-radius: 50%;
   margin-right: 10px;
   object-fit: cover;
+`;
+
+const InputsWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media only Screen and (max-width: 960px) {
+    flex-direction: column;
+  }
+`;
+
+const ShorterInputs = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  @media only Screen and (max-width: 640px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+`;
+
+const Species = styled.select`
+  width: 50%;
+  height: 35px;
+  background: white;
+  color: gray;
+  font-size: 14px;
+  border: solid;
+  border-width: thin;
+
+  option {
+    color: black;
+    background: white;
+    font-weight: small;
+    display: flex;
+    white-space: pre;
+    min-height: 20px;
+    padding: 0px 2px 1px;
+  }
 `;
 
 const Description = styled.textarea`
@@ -113,14 +154,32 @@ const CreateNotice = () => {
   return (
     <Container>
       <Wrapper>
-        <InputSection>
+        <TopHalf>
           <UserAvatar
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture."
           />
-          <Name placeholder="Pet name" ref={name} />
-          <Description placeholder="Describe your pet here" ref={description} />
-        </InputSection>
+          <InputsWrapper>
+            <ShorterInputs>
+              <Name placeholder="Pet name" ref={name} />
+              <Species>
+                <option value="" hidden>
+                  Pet Species
+                </option>
+                <option value="dog">Dog</option>
+                <option value="cat">Cat</option>
+                <option value="rabbit">Rabbit</option>
+                <option value="hamster">Hamster</option>
+                <option value="tortoise">Tortoise</option>
+                <option value="other">Other</option>
+              </Species>
+            </ShorterInputs>
+            <Description
+              placeholder="Describe your pet here"
+              ref={description}
+            />
+          </InputsWrapper>
+        </TopHalf>
         <hr style={{ margin: "20px" }} />
         {file && (
           <ImageContainer>
