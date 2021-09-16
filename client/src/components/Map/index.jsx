@@ -31,6 +31,7 @@ class MapContainer extends Component {
           <Map
             google={this.props.google}
             zoom={9.8}
+            disableDefaultUI={true}
             containerStyle={containerStyle}
             initialCenter={{
               lat: this.state.lat,

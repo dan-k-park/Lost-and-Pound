@@ -14,7 +14,8 @@ const Container = styled.div`
   position: sticky;
   // Accounting for height of navbar
   height: calc(100vh - 60px);
-  top: 60px;
+  top: 0;
+  padding: 20px 0 0 20px;
   overflow-y: scroll;
 
   &::-webkit-scrollbar {
@@ -28,14 +29,10 @@ const Container = styled.div`
   &::-webkit-scrollbar-thumb {
     background-color: rgb(179, 179, 169);
   }
-`;
 
-const Wrapper = styled.div`
-  padding: 20px;
-`;
-
-const Title = styled.h3`
-  margin-bottom: 20px;
+  @media only Screen and (max-width: 640px) {
+    flex: 0.75;
+  }
 `;
 
 const FiltersList = styled.ul`
@@ -48,8 +45,12 @@ const Filter = styled.li`
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  margin-bottom: 20px;
   cursor: pointer;
+  margin-bottom: 24px;
+
+  @media only Screen and (min-width: 960px) {
+    display: ${(props) => (props.location ? "none" : "flex")};
+  }
 `;
 
 const FilterIcon = styled.div`
@@ -59,19 +60,23 @@ const FilterIcon = styled.div`
 
 const FilterName = styled.span`
   margin-left: 18px;
-`;
 
-const FilterDivider = styled.hr`
-  margin: 20px 0;
+  @media only Screen and (max-width: 640px) {
+    display: none;
+  }
 `;
 
 const LocationWrapper = styled.div`
   padding: 0;
-  margin: 0;
+  margin: 36px 0 0 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+
+  @media only Screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const CityStateBar = styled.div`
@@ -101,7 +106,8 @@ const ApplyButton = styled.button`
   font-size: 18px;
   width: 90px;
   height: 30px;
-  z-index: 99;
+  margin-top: 24px;
+  margin-bottom: 24px;
 `;
 
 const MapContainer = styled.div`
@@ -113,70 +119,70 @@ const MapContainer = styled.div`
 const Filters = () => {
   return (
     <Container>
-      <Wrapper>
-        <Title>Filter by Animal</Title>
-        <FiltersList>
-          <Filter>
-            <FilterIcon>
-              <Dog />
-            </FilterIcon>
-            <FilterName>Dog</FilterName>
-          </Filter>
-          <Filter>
-            <FilterIcon>
-              <Cat />
-            </FilterIcon>
-            <FilterName>Cat</FilterName>
-          </Filter>
-          <Filter>
-            <FilterIcon>
-              <Rabbit />
-            </FilterIcon>
-            <FilterName>Rabbit</FilterName>
-          </Filter>
-          <Filter>
-            <FilterIcon>
-              <Hamster />
-            </FilterIcon>
-            <FilterName>Hamster</FilterName>
-          </Filter>
-          <Filter>
-            <FilterIcon>
-              <Tortoise />
-            </FilterIcon>
-            <FilterName>Tortoise</FilterName>
-          </Filter>
-          <Filter>
-            <FilterIcon>
-              <Jellyfish />
-            </FilterIcon>
-            <FilterName>Other</FilterName>
-          </Filter>
-        </FiltersList>
-        <FilterDivider />
-        <Title>Location</Title>
-        <LocationWrapper>
-          <CityStateBar>
-            <MdLocationCity style={{ marginLeft: "12px" }} />
-            <CityStateInput placeholder="City" />
-          </CityStateBar>
-          <span style={{ marginBottom: "12px" }}>or</span>
-          <CityStateBar>
-            <MdLocationOn style={{ marginLeft: "12px" }} />
-            <CityStateInput placeholder="County" />
-          </CityStateBar>
-          <span style={{ marginBottom: "12px" }}>and</span>
-          <CityStateBar>
-            <MdMap style={{ marginLeft: "12px" }} />
-            <CityStateInput placeholder="State" />
-          </CityStateBar>
-          <ApplyButton>Apply</ApplyButton>
-
-          <MapContainer>
-            <Map />
-          </MapContainer>
-        </LocationWrapper>
-      </Wrapper>
+      <FiltersList>
+        <Filter>
+          <FilterIcon>
+            <Dog />
+          </FilterIcon>
+          <FilterName>Dog</FilterName>
+        </Filter>
+        <Filter>
+          <FilterIcon>
+            <Cat />
+          </FilterIcon>
+          <FilterName>Cat</FilterName>
+        </Filter>
+        <Filter>
+          <FilterIcon>
+            <Rabbit />
+          </FilterIcon>
+          <FilterName>Rabbit</FilterName>
+        </Filter>
+        <Filter>
+          <FilterIcon>
+            <Hamster />
+          </FilterIcon>
+          <FilterName>Hamster</FilterName>
+        </Filter>
+        <Filter>
+          <FilterIcon>
+            <Tortoise />
+          </FilterIcon>
+          <FilterName>Tortoise</FilterName>
+        </Filter>
+        <Filter>
+          <FilterIcon>
+            <Jellyfish />
+          </FilterIcon>
+          <FilterName>Other</FilterName>
+        </Filter>
+        <Filter location>
+          <FilterIcon>
+            <MdMap style={{ fontSize: "24px" }} />
+          </FilterIcon>
+          <FilterName>Location</FilterName>
+        </Filter>
+      </FiltersList>
+      <LocationWrapper>
+        <CityStateBar>
+          <MdLocationCity style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="City" />
+        </CityStateBar>
+        <span style={{ marginBottom: "12px" }}>or</span>
+        <CityStateBar>
+          <MdLocationOn style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="County" />
+        </CityStateBar>
+        <span style={{ marginBottom: "12px" }}>and</span>
+        <CityStateBar>
+          <MdMap style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="State" />
+        </CityStateBar>
+        <ApplyButton>Apply</ApplyButton>
+        <MapContainer>
+          <Map />
+        </MapContainer>
+      </LocationWrapper>
     </Container>
   );
 };
