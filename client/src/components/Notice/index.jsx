@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { MdGroup } from "react-icons";
+import { MdGroup } from "react-icons/md";
 
 const Container = styled.div`
   width: 100%;
@@ -13,6 +13,12 @@ const Container = styled.div`
 
 const Wrapper = styled.div`
   padding: 10px;
+`;
+
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space between;
 `;
 
 const OwnerAvatarContainer = styled.div`

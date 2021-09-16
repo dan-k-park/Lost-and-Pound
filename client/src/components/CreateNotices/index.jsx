@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import styled from "styled-components";
-import { MdCancel, MdPermMedia } from "react-icons";
+import { MdCancel, MdPermMedia } from "react-icons/md";
 
 const Container = styled.div`
   width: 100%;
@@ -19,8 +19,8 @@ const InputSection = styled.div`
 `;
 
 const UserAvatar = styled.img`
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   margin-right: 10px;
   object-fit: cover;
@@ -102,7 +102,7 @@ const CreateNotice = () => {
           <NoticeInput placeholder="Describe your pet here" ref={description} />
         </InputSection>
         <hr style={{ margin: "20px" }} />
-        {image && (
+        {file && (
           <ImageContainer>
             <PreviewImage
               src={URL.createObjectURL(file)}

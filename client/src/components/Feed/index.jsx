@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import Notice from "../Notice";
+import CreateNotice from "../CreateNotices";
 
 const Container = styled.div`
   flex: 5.5;
@@ -12,7 +14,10 @@ const Wrapper = styled.div`
 const Feed = () => {
   return (
     <Container>
-      <Wrapper>Feed</Wrapper>
+      <Wrapper>
+        <CreateNotice />
+        <Notice />
+      </Wrapper>
     </Container>
   );
 };
