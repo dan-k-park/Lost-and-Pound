@@ -15,6 +15,19 @@ const Container = styled.div`
   // Accounting for height of navbar
   height: calc(100vh - 60px);
   top: 60px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(179, 179, 169);
+  }
 `;
 
 const Wrapper = styled.div`
@@ -45,7 +58,7 @@ const FilterIcon = styled.div`
 `;
 
 const FilterName = styled.span`
-  margin-left: 24px;
+  margin-left: 18px;
 `;
 
 const FilterDivider = styled.hr`
@@ -85,16 +98,14 @@ const CityStateInput = styled.input`
 `;
 
 const ApplyButton = styled.button`
-  margin-top: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
   font-size: 18px;
-  width: 40%;
+  width: 90px;
+  height: 30px;
+  z-index: 99;
 `;
 
 const MapContainer = styled.div`
-  background-color: yellow;
-  margin-top: 28px;
+  margin-top: 10px;
   width: 90%;
   height: 15vw;
 `;
@@ -159,11 +170,12 @@ const Filters = () => {
             <MdMap style={{ marginLeft: "12px" }} />
             <CityStateInput placeholder="State" />
           </CityStateBar>
+          <ApplyButton>Apply</ApplyButton>
+
           <MapContainer>
             <Map />
           </MapContainer>
         </LocationWrapper>
-        <ApplyButton>Apply</ApplyButton>
       </Wrapper>
     </Container>
   );

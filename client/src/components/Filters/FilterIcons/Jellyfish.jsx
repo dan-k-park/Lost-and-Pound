@@ -4,7 +4,6 @@ const Jellyfish = () => {
   return (
     <svg
       id="Capa_1"
-      enable-background="new 0 0 512.268 512.268"
       viewBox="0 0 512.268 512.268"
       xmlns="http://www.w3.org/2000/svg"
     >

@@ -1,23 +1,44 @@
 import React, { Component } from "react";
 import { Map, GoogleApiWrapper } from "google-maps-react";
 
-const mapStyles = {
-  width: "100%",
-  height: "100%",
-};
+class MapContainer extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lat: null,
+      lng: null,
+      coordsLoaded: false,
+    };
+  }
 
-export class MapContainer extends Component {
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.setState({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+        coordsLoaded: true,
+      });
+    });
+  }
   render() {
+    const containerStyle = {
+      width: "85%",
+      height: "255px",
+    };
     return (
-      <Map
-        google={this.props.google}
-        zoom={9.8}
-        style={mapStyles}
-        initialCenter={{
-          lat: 47.620422,
-          lng: -122.349358,
-        }}
-      />
+      <div>
+        {this.state.coordsLoaded ? (
+          <Map
+            google={this.props.google}
+            zoom={9.8}
+            containerStyle={containerStyle}
+            initialCenter={{
+              lat: this.state.lat,
+              lng: this.state.lng,
+            }}
+          />
+        ) : null}
+      </div>
     );
   }
 }
