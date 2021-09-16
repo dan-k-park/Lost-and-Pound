@@ -3,11 +3,18 @@ import styled from "styled-components";
 
 const Container = styled.div`
   flex: 5.5;
-  background-color: red;
+`;
+
+const Wrapper = styled.div`
+  padding: 20px;
 `;
 
 const Feed = () => {
-  return <Container>Feed</Container>;
+  return (
+    <Container>
+      <Wrapper>Feed</Wrapper>
+    </Container>
+  );
 };
 
 export default Feed;

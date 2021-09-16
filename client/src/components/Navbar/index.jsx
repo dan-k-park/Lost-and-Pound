@@ -131,7 +131,7 @@ const IconBadge = styled.span`
   font-size: 12px;
 `;
 
-const UserImg = styled.img`
+const UserAvatar = styled.img`
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -174,7 +174,7 @@ const Navbar = () => {
           </NavIcon>
         </NavIconContainer>
         <Link to="/">
-          <UserImg
+          <UserAvatar
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture"
           />
