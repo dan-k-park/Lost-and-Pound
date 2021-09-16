@@ -7,6 +7,7 @@ import Jellyfish from "./FilterIcons/Jellyfish.jsx";
 import Rabbit from "./FilterIcons/Rabbit.jsx";
 import Tortoise from "./FilterIcons/Tortoise.jsx";
 import { MdMap, MdLocationCity, MdLocationOn } from "react-icons/md";
+import Map from "../Map/index.jsx";
 
 const Container = styled.div`
   flex: 2.5;
@@ -14,7 +15,6 @@ const Container = styled.div`
   // Accounting for height of navbar
   height: calc(100vh - 60px);
   top: 60px;
-  background-color: red;
 `;
 
 const Wrapper = styled.div`
@@ -65,7 +65,11 @@ const CityStateBar = styled.div`
   width: 80%;
   height: 30px;
   background-color: #fff;
+  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.4);
+  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.4);
   border-radius: 10px;
+  border: solid;
+  border-width: thin;
   display: flex;
   align-items: center;
   margin-bottom: 12px;
@@ -86,6 +90,13 @@ const ApplyButton = styled.button`
   border-radius: 10px;
   font-size: 18px;
   width: 40%;
+`;
+
+const MapContainer = styled.div`
+  background-color: yellow;
+  margin-top: 28px;
+  width: 90%;
+  height: 15vw;
 `;
 
 const Filters = () => {
@@ -143,10 +154,14 @@ const Filters = () => {
             <MdLocationOn style={{ marginLeft: "12px" }} />
             <CityStateInput placeholder="County" />
           </CityStateBar>
+          <span style={{ marginBottom: "12px" }}>and</span>
           <CityStateBar>
             <MdMap style={{ marginLeft: "12px" }} />
             <CityStateInput placeholder="State" />
           </CityStateBar>
+          <MapContainer>
+            <Map />
+          </MapContainer>
         </LocationWrapper>
         <ApplyButton>Apply</ApplyButton>
       </Wrapper>
