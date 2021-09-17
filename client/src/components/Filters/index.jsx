@@ -30,6 +30,10 @@ const Container = styled.div`
     background-color: rgb(179, 179, 169);
   }
 
+  @media only Screen and (max-width: 960px) {
+    flex: 1.3;
+  }
+
   @media only Screen and (max-width: 640px) {
     flex: 0.75;
   }
