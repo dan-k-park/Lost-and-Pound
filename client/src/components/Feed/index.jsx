@@ -17,6 +17,8 @@ const Feed = () => {
       <Wrapper>
         <CreateNotice />
         <Notice />
+        <Notice />
+        <Notice />
       </Wrapper>
     </Container>
   );
