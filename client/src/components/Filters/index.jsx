@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { ReactComponent as Dog } from "./icons/dog.svg";
 import { ReactComponent as Cat } from "./icons/cat.svg";
@@ -108,11 +108,15 @@ const CityStateInput = styled.input`
 `;
 
 const ApplyButton = styled.button`
-  font-size: 18px;
-  width: 90px;
-  height: 30px;
-  margin-top: 24px;
-  margin-bottom: 24px;
+  border: none;
+  padding: 7px;
+  border-radius: 5px;
+  background-color: limegreen;
+  font-weight: 500;
+  margin: 10px 0 10px 0;
+  cursor: pointer;
+  color: white;
+  width: 80px;
 `;
 
 const MapContainer = styled.div`
@@ -122,6 +126,12 @@ const MapContainer = styled.div`
 `;
 
 const Filters = () => {
+  const [showModal, setShowModal] = useState(false);
+
+  const openModal = () => {
+    setShowModal((prev) => !prev);
+  };
+
   return (
     <Container>
       <FiltersList>
@@ -163,7 +173,7 @@ const Filters = () => {
         </Filter>
         <Filter location>
           <FilterIcon>
-            <MdMap style={{ fontSize: "24px" }} />
+            <MdMap style={{ fontSize: "24px" }} onClick={openModal} />
           </FilterIcon>
           <FilterName>Location</FilterName>
         </Filter>

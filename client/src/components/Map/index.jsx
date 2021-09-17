@@ -24,6 +24,10 @@ class MapContainer extends Component {
     const containerStyle = {
       width: "85%",
       height: "255px",
+      border: "solid",
+      borderWidth: "thin",
+      borderColor: "#dbdbdb",
+      borderRadius: "3px",
     };
     return (
       <div>

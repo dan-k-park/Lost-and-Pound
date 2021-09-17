@@ -138,6 +138,7 @@ const IconBadge = styled.span`
   right: -3px;
   display: flex;
   justify-content: center;
+  align-items: center;
   font-size: 12px;
 `;
 
