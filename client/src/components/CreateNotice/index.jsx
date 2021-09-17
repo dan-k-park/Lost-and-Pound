@@ -40,6 +40,12 @@ const InputsWrapper = styled.div`
 
   @media only Screen and (max-width: 960px) {
     flex-direction: column;
+    align-items: flex-end
+    gap: 10px;
+  }
+
+  @media only Screen and (max-width: 640px) {
+    gap: 10px;
   }
 `;
 
@@ -50,9 +56,17 @@ const ShorterInputs = styled.div`
   align-items: flex-start;
   height: 100%;
   @media only Screen and (max-width: 960px) {
+    width: 80%;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    gap: 10px;
+  }
+
+  @media only Screen and (max-width: 640px) {
+    width: 80%;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 `;
 
@@ -94,6 +108,7 @@ const Description = styled.textarea`
   }
   @media only Screen and (max-width: 960px) {
     font-size: 12px;
+    height: 120px;
   }
 `;
 
@@ -167,6 +182,7 @@ const CreateButton = styled.button`
   margin-right: 20px;
   cursor: pointer;
   color: white;
+  width: 80px;
 `;
 
 const CreateNotice = () => {
@@ -247,7 +263,7 @@ const CreateNotice = () => {
               <OptionText>Location</OptionText>
             </Option>
           </Options>
-          <CreateButton type="submit">Create Notice</CreateButton>
+          <CreateButton type="submit">Post</CreateButton>
         </Form>
       </Wrapper>
     </Container>
