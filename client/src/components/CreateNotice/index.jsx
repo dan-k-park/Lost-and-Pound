@@ -46,23 +46,24 @@ const InputsWrapper = styled.div`
 const ShorterInputs = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: flex-start;
-  flex: 5;
-  @media only Screen and (max-width: 640px) {
+  height: 100%;
+  @media only Screen and (max-width: 960px) {
     flex-direction: row;
+    align-items: center;
     justify-content: space-between;
   }
 `;
 
 const Species = styled.select`
-  width: 50%;
-  height: 35px;
+  width: 80%;
+  padding: 5px;
   background: white;
-  color: gray;
   font-size: 14px;
   border: solid;
   border-width: thin;
+  border-radius: 3px;
 
   option {
     color: black;
@@ -73,6 +74,9 @@ const Species = styled.select`
     min-height: 20px;
     padding: 0px 2px 1px;
   }
+  @media only Screen and (max-width: 960px) {
+    font-size: 12px;
+  }
 `;
 
 const Description = styled.textarea`
@@ -80,23 +84,32 @@ const Description = styled.textarea`
   border-width: thin;
   border-radius: 5px;
   resize: none;
-  width: 60%;
-  height: 100px;
+  width: 80%;
+  height: 84px;
   padding: 10px;
+  font-size: 14px;
 
   &:focus {
     outline: none;
+  }
+  @media only Screen and (max-width: 960px) {
+    font-size: 12px;
   }
 `;
 
 const Name = styled.input`
   border: solid;
   border-width: thin;
-  border-radius: 0.5px;
-  width: 40%;
+  border-radius: 3px;
+  padding: 5px;
+  font-size: 14px;
+  width: 80%;
 
   &:focus {
     outline: none;
+  }
+  @media only Screen and (max-width: 960px) {
+    font-size: 12px;
   }
 `;
 
@@ -171,10 +184,10 @@ const CreateNotice = () => {
           />
           <InputsWrapper>
             <ShorterInputs>
-              <Name placeholder="Pet name" ref={name} />
+              <Name placeholder="Name" ref={name} />
               <Species>
                 <option value="" hidden>
-                  Pet Species
+                  Species
                 </option>
                 <option value="dog">Dog</option>
                 <option value="cat">Cat</option>
@@ -186,6 +199,7 @@ const CreateNotice = () => {
             </ShorterInputs>
             <Description
               placeholder="Describe your pet here"
+              maxLength="150"
               ref={description}
             />
           </InputsWrapper>
