@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
-import Cat from "./FilterIcons/Cat.jsx";
-import Dog from "./FilterIcons/Dog.jsx";
-import Hamster from "./FilterIcons/Hamster.jsx";
-import Jellyfish from "./FilterIcons/Jellyfish.jsx";
-import Rabbit from "./FilterIcons/Rabbit.jsx";
-import Tortoise from "./FilterIcons/Tortoise.jsx";
+import { ReactComponent as Dog } from "./icons/dog.svg";
+import { ReactComponent as Cat } from "./icons/cat.svg";
+import { ReactComponent as Hamster } from "./icons/hamster.svg";
+import { ReactComponent as Tortoise } from "./icons/tortoise.svg";
+import { ReactComponent as Jellyfish } from "./icons/jellyfish.svg";
+import { ReactComponent as Rabbit } from "./icons/rabbit.svg";
 import { MdMap, MdLocationCity, MdLocationOn } from "react-icons/md";
 import Map from "../Map/index.jsx";
 
