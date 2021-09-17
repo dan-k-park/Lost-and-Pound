@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { format } from "timeago.js";
+
 import { MdGroup } from "react-icons/md";
 
 const Container = styled.div`

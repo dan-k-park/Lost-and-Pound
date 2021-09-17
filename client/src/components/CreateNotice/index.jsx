@@ -35,6 +35,8 @@ const InputsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 100px;
+  width: 90%;
 
   @media only Screen and (max-width: 960px) {
     flex-direction: column;
@@ -46,6 +48,7 @@ const ShorterInputs = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  flex: 5;
   @media only Screen and (max-width: 640px) {
     flex-direction: row;
     justify-content: space-between;
@@ -73,8 +76,13 @@ const Species = styled.select`
 `;
 
 const Description = styled.textarea`
-  border: none;
-  width: 80%;
+  border: solid;
+  border-width: thin;
+  border-radius: 5px;
+  resize: none;
+  width: 60%;
+  height: 100px;
+  padding: 10px;
 
   &:focus {
     outline: none;
@@ -82,7 +90,9 @@ const Description = styled.textarea`
 `;
 
 const Name = styled.input`
-  border: none;
+  border: solid;
+  border-width: thin;
+  border-radius: 0.5px;
   width: 40%;
 
   &:focus {
