@@ -47,6 +47,7 @@ const InputsWrapper = styled.div`
 
   @media only Screen and (max-width: 640px) {
     gap: 10px;
+      margin-bottom: 10px;
   }
 `;
 
@@ -73,18 +74,17 @@ const ShorterInputs = styled.div`
 
 const Species = styled.select`
   width: 80%;
-  padding: 3px;
-  background: white;
+  padding: 5px;
   font-size: 14px;
   border: solid;
   border-width: thin;
   border-color: #dbdbdb;
   border-radius: 3px;
   background-color: #fafafa;
-
+  color: #747474;
   option {
     color: black;
-    background: white;
+    background: #fafafa;
     display: flex;
     white-space: pre;
     min-height: 20px;

@@ -37,7 +37,7 @@ const Large = styled.h3`
 
 const Small = styled.h3`
   display: none;
-  color: #fff;
+  color: #000;
   @media only Screen and (max-width: 640px) {
     display: inline-block;
   }
@@ -88,7 +88,7 @@ const SearchButton = styled(MdSearch)`
     display: block;
     font-size: 28px;
     margin-right: 12px;
-    color: #fff;
+    color: #000;
   }
 `;
 
@@ -171,15 +171,15 @@ const Navbar = () => {
         <NavIconContainer searchOpen={searchOpen}>
           <SearchButton onClick={() => setSearchOpen(true)} />
           <NavIcon>
-            <MdPersonOutline style={{ fontSize: "28px" }} />
+            <MdPersonOutline style={{ fontSize: "28px", color: "#000" }} />
             <IconBadge>1</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdChatBubbleOutline style={{ fontSize: "28px" }} />
+            <MdChatBubbleOutline style={{ fontSize: "28px", color: "#000" }} />
             <IconBadge>2</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdNotificationsNone style={{ fontSize: "28px" }} />
+            <MdNotificationsNone style={{ fontSize: "28px", color: "#000" }} />
             <IconBadge>3</IconBadge>
           </NavIcon>
         </NavIconContainer>
