@@ -2,17 +2,20 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import {
-  MdPerson,
+  MdPersonOutline,
   MdSearch,
-  MdNotifications,
-  MdChatBubble,
+  MdNotificationsNone,
+  MdChatBubbleOutline,
   MdCancel,
 } from "react-icons/md";
 
 const Container = styled.div`
   height: 60px;
   width: 100%;
-  background-color: #1da1f2;
+  background-color: #fff;
+  border-bottom: solid;
+  border-width: thin;
+  border-color: #dbdbdb;
   display: flex;
   align-items: center;
   position: sticky;
@@ -26,7 +29,7 @@ const LogoContainer = styled.div`
 
 const Large = styled.h3`
   display: inline-block;
-  color: #fff;
+  color: #000;
   @media only Screen and (max-width: 640px) {
     display: none;
   }
@@ -48,6 +51,7 @@ const SearchContainer = styled.div`
   flex: 6;
   display: flex;
   justify-content: center;
+
   @media only Screen and (max-width: 640px) {
     display: ${(props) => (props.searchOpen ? "flex" : "none")};
   }
@@ -56,8 +60,11 @@ const SearchContainer = styled.div`
 const SearchBar = styled.div`
   width: 80%;
   height: 30px;
-  background-color: #fff;
+  background-color: #fafafa;
   border-radius: 10px;
+  border: solid;
+  border-width: thin;
+  border-color: #dbdbdb;
   display: flex;
   align-items: center;
   @media only Screen and (max-width: 640px) {
@@ -68,6 +75,7 @@ const SearchBar = styled.div`
 const SearchInput = styled.input`
   border: none;
   width: 70%;
+  background-color: #fafafa;
 
   &:focus {
     outline: none;
@@ -163,15 +171,15 @@ const Navbar = () => {
         <NavIconContainer searchOpen={searchOpen}>
           <SearchButton onClick={() => setSearchOpen(true)} />
           <NavIcon>
-            <MdPerson style={{ fontSize: "28px" }} />
+            <MdPersonOutline style={{ fontSize: "28px" }} />
             <IconBadge>1</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdChatBubble style={{ fontSize: "28px" }} />
+            <MdChatBubbleOutline style={{ fontSize: "28px" }} />
             <IconBadge>2</IconBadge>
           </NavIcon>
           <NavIcon>
-            <MdNotifications style={{ fontSize: "28px" }} />
+            <MdNotificationsNone style={{ fontSize: "28px" }} />
             <IconBadge>3</IconBadge>
           </NavIcon>
         </NavIconContainer>

@@ -10,8 +10,9 @@ import {
 const Container = styled.div`
   width: 100%;
   border-radius: 10px;
-  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
-  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.68);
+  border: solid;
+  border-width: thin;
+  border-color: #dbdbdb;
 `;
 
 const Wrapper = styled.div`
@@ -72,17 +73,18 @@ const ShorterInputs = styled.div`
 
 const Species = styled.select`
   width: 80%;
-  padding: 5px;
+  padding: 3px;
   background: white;
   font-size: 14px;
   border: solid;
   border-width: thin;
+  border-color: #dbdbdb;
   border-radius: 3px;
+  background-color: #fafafa;
 
   option {
     color: black;
     background: white;
-    font-weight: small;
     display: flex;
     white-space: pre;
     min-height: 20px;
@@ -96,7 +98,9 @@ const Species = styled.select`
 const Description = styled.textarea`
   border: solid;
   border-width: thin;
-  border-radius: 5px;
+  border-color: #dbdbdb;
+  border-radius: 3px;
+  background-color: #fafafa;
   resize: none;
   width: 80%;
   height: 84px;
@@ -115,7 +119,9 @@ const Description = styled.textarea`
 const Name = styled.input`
   border: solid;
   border-width: thin;
+  border-color: #dbdbdb;
   border-radius: 3px;
+  background-color: #fafafa;
   padding: 5px;
   font-size: 14px;
   width: 80%;
@@ -185,6 +191,14 @@ const CreateButton = styled.button`
   width: 80px;
 `;
 
+const Divider = styled.hr`
+  margin: 20px 0 20px 0;
+  width: 100%;
+  border: solid;
+  border-width: thin;
+  border-color: #dbdbdb;
+`;
+
 const CreateNotice = () => {
   const description = useRef();
   const name = useRef();
@@ -220,7 +234,7 @@ const CreateNotice = () => {
             />
           </InputsWrapper>
         </TopHalf>
-        <hr style={{ margin: "20px" }} />
+        <Divider />
         {file && (
           <ImageContainer>
             <PreviewImage

@@ -87,11 +87,11 @@ const CityStateBar = styled.div`
   width: 80%;
   height: 30px;
   background-color: #fff;
-  -webkit-box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.4);
-  box-shadow: 0px 0px 16px -8px rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
   border: solid;
   border-width: thin;
+  border-color: #dbdbdb;
+  border-radius: 3px;
+  background-color: #fafafa;
   display: flex;
   align-items: center;
   margin-bottom: 12px;
@@ -100,6 +100,7 @@ const CityStateBar = styled.div`
 const CityStateInput = styled.input`
   border: none;
   width: 70%;
+  background-color: #fafafa;
 
   &:focus {
     outline: none;

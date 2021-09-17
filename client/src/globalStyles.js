@@ -17,6 +17,6 @@ body: {
   border: 0;
   outline: 0;
   overflow-x: hidden;
-  background: #e1e8ed
+  background: #fafafa
 }
 `;
