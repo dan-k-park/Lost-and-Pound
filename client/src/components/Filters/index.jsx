@@ -7,6 +7,7 @@ import { ReactComponent as Tortoise } from "./icons/tortoise.svg";
 import { ReactComponent as Jellyfish } from "./icons/jellyfish.svg";
 import { ReactComponent as Rabbit } from "./icons/rabbit.svg";
 import { MdMap, MdLocationCity, MdLocationOn } from "react-icons/md";
+import Modal from "react-modal";
 import Map from "../Map/index.jsx";
 
 const Container = styled.div`
@@ -126,11 +127,7 @@ const MapContainer = styled.div`
 `;
 
 const Filters = () => {
-  const [showModal, setShowModal] = useState(false);
-
-  const openModal = () => {
-    setShowModal((prev) => !prev);
-  };
+  const [openModal, setOpenModal] = useState(false);
 
   return (
     <Container>
@@ -171,9 +168,9 @@ const Filters = () => {
           </FilterIcon>
           <FilterName>Other</FilterName>
         </Filter>
-        <Filter location>
+        <Filter location onClick={() => setOpenModal(true)}>
           <FilterIcon>
-            <MdMap style={{ fontSize: "24px" }} onClick={openModal} />
+            <MdMap style={{ fontSize: "24px" }} />
           </FilterIcon>
           <FilterName>Location</FilterName>
         </Filter>
@@ -198,6 +195,15 @@ const Filters = () => {
           <Map />
         </MapContainer>
       </LocationWrapper>
+      <Modal
+        isOpen={openModal}
+        ariaHideApp={false}
+        onRequestClose={() => setOpenModal(false)}
+      >
+        <h2>Title</h2>
+        <p>Body</p>
+        <button onClick={() => setOpenModal(false)}>Close</button>
+      </Modal>
     </Container>
   );
 };
