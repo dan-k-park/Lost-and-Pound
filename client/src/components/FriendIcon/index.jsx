@@ -32,6 +32,10 @@ const OnlineDot = styled.span`
 
 const FriendName = styled.span`
   font-weight: 500;
+
+  @media only Screen and (max-width: 960px) {
+    display: none;
+  }
 `;
 
 const FriendIcon = () => {
