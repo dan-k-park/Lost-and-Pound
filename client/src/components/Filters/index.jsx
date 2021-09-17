@@ -120,7 +120,7 @@ const ApplyButton = styled.button`
   width: 80px;
 `;
 
-const MapContainer = styled.div`
+const MapWrapper = styled.div`
   margin-top: 10px;
   width: 90%;
   height: 15vw;
@@ -191,14 +191,40 @@ const Filters = () => {
           <CityStateInput placeholder="State" />
         </CityStateBar>
         <ApplyButton>Apply</ApplyButton>
-        <MapContainer>
+        <MapWrapper>
           <Map />
-        </MapContainer>
+        </MapWrapper>
       </LocationWrapper>
       <Modal
         isOpen={openModal}
         ariaHideApp={false}
         onRequestClose={() => setOpenModal(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            margin: "10vh auto auto auto",
+            height: "80vw",
+            position: "absolute",
+            top: "40px",
+            left: "40px",
+            right: "40px",
+            bottom: "40px",
+            border: "1px solid #ccc",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+            padding: "20px",
+          },
+        }}
       >
         <h2>Title</h2>
         <p>Body</p>
