@@ -226,7 +226,24 @@ const Filters = () => {
           },
         }}
       >
-        <h2>Title</h2>
+        <CityStateBar>
+          <MdLocationCity style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="City" />
+        </CityStateBar>
+        <span style={{ marginBottom: "12px" }}>or</span>
+        <CityStateBar>
+          <MdLocationOn style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="County" />
+        </CityStateBar>
+        <span style={{ marginBottom: "12px" }}>and</span>
+        <CityStateBar>
+          <MdMap style={{ marginLeft: "12px" }} />
+          <CityStateInput placeholder="State" />
+        </CityStateBar>
+        <ApplyButton>Apply</ApplyButton>
+        <MapWrapper>
+          <Map />
+        </MapWrapper>
         <p>Body</p>
         <button onClick={() => setOpenModal(false)}>Close</button>
       </Modal>
