@@ -88,6 +88,8 @@ const CancelButton = styled(MdCancel)`
   display: none;
   @media only Screen and (max-width: 640px) {
     display: inline-block;
+    margin-left: 5.5vw;
+    margin-right: 5px;
   }
 `;
 
