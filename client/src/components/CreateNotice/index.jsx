@@ -10,9 +10,7 @@ import {
 const Container = styled.div`
   width: 100%;
   border-radius: 10px;
-  border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
+  border: thin solid #dbdbdb;
 `;
 
 const Wrapper = styled.div`

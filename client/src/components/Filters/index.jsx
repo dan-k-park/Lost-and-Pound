@@ -126,6 +126,14 @@ const MapWrapper = styled.div`
   height: 15vw;
 `;
 
+const ModalInputContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+`;
+
 const Filters = () => {
   const [openModal, setOpenModal] = useState(false);
 
@@ -209,43 +217,37 @@ const Filters = () => {
             backgroundColor: "rgba(255, 255, 255, 0.75)",
           },
           content: {
-            margin: "10vh auto auto auto",
-            height: "80vw",
-            position: "absolute",
-            top: "40px",
-            left: "40px",
-            right: "40px",
-            bottom: "40px",
-            border: "1px solid #ccc",
+            margin: "auto",
+            height: "300px",
+            width: "300px",
+            display: "flex",
+            justifyContent: "center",
+            border: "1px solid #dbdbdb",
             background: "#fff",
             overflow: "auto",
             WebkitOverflowScrolling: "touch",
             borderRadius: "4px",
             outline: "none",
-            padding: "20px",
           },
         }}
       >
-        <CityStateBar>
-          <MdLocationCity style={{ marginLeft: "12px" }} />
-          <CityStateInput placeholder="City" />
-        </CityStateBar>
-        <span style={{ marginBottom: "12px" }}>or</span>
-        <CityStateBar>
-          <MdLocationOn style={{ marginLeft: "12px" }} />
-          <CityStateInput placeholder="County" />
-        </CityStateBar>
-        <span style={{ marginBottom: "12px" }}>and</span>
-        <CityStateBar>
-          <MdMap style={{ marginLeft: "12px" }} />
-          <CityStateInput placeholder="State" />
-        </CityStateBar>
-        <ApplyButton>Apply</ApplyButton>
-        <MapWrapper>
-          <Map />
-        </MapWrapper>
-        <p>Body</p>
-        <button onClick={() => setOpenModal(false)}>Close</button>
+        <ModalInputContainer>
+          <CityStateBar>
+            <MdLocationCity style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="City" />
+          </CityStateBar>
+          <span style={{ marginBottom: "12px" }}>or</span>
+          <CityStateBar>
+            <MdLocationOn style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="County" />
+          </CityStateBar>
+          <span style={{ marginBottom: "12px" }}>and</span>
+          <CityStateBar>
+            <MdMap style={{ marginLeft: "12px" }} />
+            <CityStateInput placeholder="State" />
+          </CityStateBar>
+          <ApplyButton onClick={() => setOpenModal(false)}>Apply</ApplyButton>
+        </ModalInputContainer>
       </Modal>
     </Container>
   );

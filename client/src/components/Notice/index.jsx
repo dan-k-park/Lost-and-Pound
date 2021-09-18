@@ -7,9 +7,7 @@ import { MdGroup } from "react-icons/md";
 
 const Container = styled.div`
   width: 100%;
-  border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
+  border: thin solid #dbdbdb;
   border-radius: 10px;
   margin: 30px 0;
 `;
