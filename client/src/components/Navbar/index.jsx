@@ -184,7 +184,7 @@ const Navbar = () => {
             <IconBadge>3</IconBadge>
           </NavIcon>
         </NavIconContainer>
-        <Link to="/">
+        <Link to="/biceros">
           <UserAvatar
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture"
