@@ -15,7 +15,6 @@ const ProfileContent = styled.div`
 `;
 
 const BioContainer = styled.div`
-  background-color: red;
   display: flex;
   height: 280px;
   padding: 10px 40px 10px 40px;
@@ -38,41 +37,64 @@ const Avatar = styled.img`
 
 const InfoContainer = styled.div`
   flex: 5;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0 0 100px;
 `;
 
 const TopLine = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  margin-bottom: 20px;
 `;
 
-const BottomLine = styled.ul`
+const MiddleLine = styled.ul`
   list-style: none;
-  display: inline-block;
+  display: flex;
+  justify-content: space-between;
+  width: 25%;
+  margin-bottom: 30px;
 `;
 
 const Logistics = styled.li`
-  display: flex;
-  justify-content: flex-start;
+  font-size: 20px;
 `;
 
-const Username = styled.h3``;
+const Username = styled.span`
+  font-size: 32px;
+  font-weight: 400;
+`;
 
 const EditProfileButton = styled.button`
-  border: none;
-  padding: 7px;
+  padding: 6px 4px 6px 4px;
   border-radius: 5px;
-  background-color: limegreen;
-  font-weight: 500;
-  margin: 10px 0 10px 0;
+  border: thin solid #dbdbdb;
+  margin: 10px 0 10px 50px;
   cursor: pointer;
-  color: white;
-  width: 80px;
+  font-size: 16px;
+  background-color: #fafafa;
+  width: 100px;
 `;
 
 const NoticesGrid = styled.div`
   flex: 7;
   background-color: blue;
+`;
+
+const BottomLine = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+`;
+
+const FullName = styled.h3`
+  margin-bottom: 10px;
+`;
+
+const Location = styled.p`
+  font-size: 20px;
 `;
 
 const Profile = () => {
@@ -88,9 +110,13 @@ const Profile = () => {
               <Username>Biceros</Username>
               <EditProfileButton>Edit Profile</EditProfileButton>
             </TopLine>
-            <BottomLine>
+            <MiddleLine>
               <Logistics>1 notice</Logistics>
               <Logistics>3 friends</Logistics>
+            </MiddleLine>
+            <BottomLine>
+              <FullName>Pseudobiceros Gloriosus</FullName>
+              <Location>Everett, Washington</Location>
             </BottomLine>
           </InfoContainer>
         </BioContainer>
