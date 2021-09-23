@@ -7,8 +7,8 @@ import Profile from "./pages/Profile";
 function App() {
   return (
     <>
-      <GlobalStyle />
       <Router>
+        <GlobalStyle />
         <Navbar />
         <Switch>
           <Route exact path="/">

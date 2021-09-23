@@ -8,15 +8,15 @@ html {
   margin:0;
   padding:0;
   box-sizing:border-box;
-  font-family: Helvetica
+  font-family: Helvetica;
 }
 
-body: {
+body {
   margin:0;
   padding:0;
   border: 0;
   outline: 0;
   overflow-x: hidden;
-  background: #fafafa
+  background-color: #fafafa;
 }
 `;

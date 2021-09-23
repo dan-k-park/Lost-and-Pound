@@ -67,12 +67,13 @@ const Username = styled.span`
 `;
 
 const EditProfileButton = styled.button`
-  padding: 6px 4px 6px 4px;
+  padding: 8px 6px 8px 6px;
   border-radius: 5px;
   border: thin solid #dbdbdb;
-  margin: 10px 0 10px 50px;
+  margin: 0 0 10px 50px;
   cursor: pointer;
   font-size: 16px;
+  font-weight: 600;
   background-color: #fafafa;
   width: 100px;
 `;
