@@ -34,6 +34,13 @@ const AvatarWrapper = styled.div`
   justify-content: center;
   align-items: flex-start;
   padding-top: 30px;
+
+  @media only Screen and (max-width: 768px) {
+    padding-top: 20px;
+    margin-left: 10px;
+    flex: 2;
+    justify-content: flex-start;
+  }
 `;
 
 const Avatar = styled.img`
@@ -43,16 +50,21 @@ const Avatar = styled.img`
   object-fit: cover;
 
   @media only Screen and (max-width: 768px) {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
   }
 `;
 
 const InfoContainer = styled.div`
-  flex: 9;
+  flex: 10;
   display: flex;
   flex-direction: column;
   padding: 20px 0 0 80px;
+
+  @media only Screen and (max-width: 768px) {
+    padding: 20px 0 0 20px;
+    position: relative;
+  }
 `;
 
 const TopLine = styled.div`
@@ -74,6 +86,10 @@ const MiddleLine = styled.ul`
   justify-content: space-between;
   width: 180px;
   margin-bottom: 30px;
+
+  @media only Screen and (max-width: 768px) {
+    display: none;
+  }
 `;
 
 const Logistics = styled.li`
@@ -99,6 +115,11 @@ const EditProfileButton = styled.button`
   font-weight: 600;
   background-color: #fafafa;
   width: 110px;
+
+  @media only Screen and (max-width: 768px) {
+    margin: 10px 0 0 0;
+    width: 80%;
+  }
 `;
 
 const NoticesGrid = styled.div`
@@ -111,14 +132,32 @@ const BottomLine = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
+
+  @media only Screen and (max-width: 768px) {
+    position: absolute;
+    top: 150px;
+    left: calc(-90vw + 90%);
+  }
 `;
 
 const FullName = styled.h3`
   margin-bottom: 10px;
+
+  // @media only Screen and (max-width: 768px) {
+  //   position: absolute;
+  //   top: 40px;
+  //   left: -140px;
+  // }
 `;
 
 const Location = styled.p`
   font-size: 20px;
+
+  // @media only Screen and (max-width: 768px) {
+  //   position: absolute;
+  //   top: 70px;
+  //   left: -140px;
+  // }
 `;
 
 const Profile = () => {
