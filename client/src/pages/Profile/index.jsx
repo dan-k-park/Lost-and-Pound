@@ -53,12 +53,16 @@ const MiddleLine = styled.ul`
   list-style: none;
   display: flex;
   justify-content: space-between;
-  width: 25%;
+  width: 180px;
   margin-bottom: 30px;
 `;
 
 const Logistics = styled.li`
   font-size: 20px;
+
+  &:last-child {
+    cursor: pointer;
+  }
 `;
 
 const Username = styled.span`
@@ -67,15 +71,15 @@ const Username = styled.span`
 `;
 
 const EditProfileButton = styled.button`
-  padding: 8px 6px 8px 6px;
+  padding: 9px 8px 9px 8px;
   border-radius: 5px;
-  border: thin solid #dbdbdb;
+  border: 1.5px solid #dbdbdb;
   margin: 0 0 10px 50px;
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
   background-color: #fafafa;
-  width: 100px;
+  width: 110px;
 `;
 
 const NoticesGrid = styled.div`
@@ -112,8 +116,12 @@ const Profile = () => {
               <EditProfileButton>Edit Profile</EditProfileButton>
             </TopLine>
             <MiddleLine>
-              <Logistics>1 notice</Logistics>
-              <Logistics>3 friends</Logistics>
+              <Logistics>
+                <b>1</b> notice
+              </Logistics>
+              <Logistics onClick={() => console.log("Open a modal here")}>
+                <b>3</b> friends
+              </Logistics>
             </MiddleLine>
             <BottomLine>
               <FullName>Pseudobiceros Gloriosus</FullName>
