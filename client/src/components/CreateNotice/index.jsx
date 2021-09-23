@@ -178,10 +178,10 @@ const OptionText = styled.span`
 `;
 
 const CreateButton = styled.button`
-  border: none;
-  padding: 7px;
+  padding: 8px 8px 8px 8px;
   border-radius: 5px;
-  background-color: limegreen;
+  border: none;
+  background-color: #0195f6;
   font-weight: 500;
   margin-right: 20px;
   cursor: pointer;

@@ -100,15 +100,14 @@ const CityStateInput = styled.input`
 `;
 
 const ApplyButton = styled.button`
-  border: none;
-  padding: 7px;
+  padding: 9px 8px 9px 8px;
   border-radius: 5px;
-  background-color: limegreen;
+  border: 1.5px solid #dbdbdb;
+  background-color: #fafafa;
   font-weight: 500;
   margin: 10px 0 10px 0;
   cursor: pointer;
-  color: white;
-  width: 80px;
+  width: 80%;
 `;
 
 const MapWrapper = styled.div`
