@@ -25,6 +25,7 @@ const BioContainer = styled.div`
 
   @media only Screen and (max-width: 768px) {
     padding: 0;
+    height: 220px;
   }
 `;
 
@@ -92,11 +93,32 @@ const MiddleLine = styled.ul`
   }
 `;
 
+const MobileLogistics = styled.ul`
+  display: none;
+
+  @media Screen and (max-width: 768px) {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    border-style: solid none solid none;
+    border-width: thin;
+    border-color: #dbdbdb;
+    height: 70px;
+  }
+`;
+
 const Logistics = styled.li`
   font-size: 20px;
 
   &:last-child {
     cursor: pointer;
+  }
+
+  @media only Screen and (max-width: 768px) {
+    text-align: center;
+    font-size: 18px;
   }
 `;
 
@@ -118,13 +140,12 @@ const EditProfileButton = styled.button`
 
   @media only Screen and (max-width: 768px) {
     margin: 10px 0 0 0;
-    width: 80%;
+    width: 90%;
   }
 `;
 
 const NoticesGrid = styled.div`
   flex: 7;
-  background-color: blue;
 `;
 
 const BottomLine = styled.div`
@@ -187,6 +208,24 @@ const Profile = () => {
             </BottomLine>
           </InfoContainer>
         </BioContainer>
+        <MobileLogistics>
+          <Logistics>
+            <b>1</b>
+            <span
+              style={{ display: "block", marginTop: "4px", color: "#8e8e8e" }}
+            >
+              notice
+            </span>
+          </Logistics>
+          <Logistics onClick={() => console.log("Open a modal here")}>
+            <b>3</b>
+            <span
+              style={{ display: "block", marginTop: "4px", color: "#8e8e8e" }}
+            >
+              friends
+            </span>
+          </Logistics>
+        </MobileLogistics>
         <NoticesGrid>hi</NoticesGrid>
       </ProfileContent>
     </Container>
