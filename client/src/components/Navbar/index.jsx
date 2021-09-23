@@ -61,7 +61,7 @@ const SearchBar = styled.div`
   width: 80%;
   height: 30px;
   background-color: #fafafa;
-  border-radius: 10px;
+  border-radius: 3px;
   border: solid;
   border-width: thin;
   border-color: #dbdbdb;

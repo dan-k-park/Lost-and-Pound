@@ -12,16 +12,24 @@ const ProfileContent = styled.div`
   width: 85%;
   display: flex;
   flex-direction: column;
+
+  @media only Screen and (max-width: 768px) {
+    width: 100%;
+  }
 `;
 
 const BioContainer = styled.div`
   display: flex;
   height: 280px;
   padding: 10px 40px 10px 40px;
+
+  @media only Screen and (max-width: 768px) {
+    padding: 0;
+  }
 `;
 
 const AvatarWrapper = styled.div`
-  flex: 1;
+  flex: 3;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -33,13 +41,18 @@ const Avatar = styled.img`
   height: 170px;
   border-radius: 50%;
   object-fit: cover;
+
+  @media only Screen and (max-width: 768px) {
+    width: 120px;
+    height: 120px;
+  }
 `;
 
 const InfoContainer = styled.div`
-  flex: 5;
+  flex: 9;
   display: flex;
   flex-direction: column;
-  padding: 20px 0 0 100px;
+  padding: 20px 0 0 80px;
 `;
 
 const TopLine = styled.div`
@@ -47,6 +60,12 @@ const TopLine = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 20px;
+
+  @media only Screen and (max-width: 768px) {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
 `;
 
 const MiddleLine = styled.ul`
