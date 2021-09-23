@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import NoticesGrid from "../../components/NoticesGrid";
 
 const Container = styled.div`
   display: flex;
@@ -144,9 +145,7 @@ const EditProfileButton = styled.button`
   }
 `;
 
-const NoticesGrid = styled.div`
-  flex: 7;
-`;
+const GridContainer = styled.div``;
 
 const BottomLine = styled.div`
   display: flex;
@@ -226,7 +225,9 @@ const Profile = () => {
             </span>
           </Logistics>
         </MobileLogistics>
-        <NoticesGrid>hi</NoticesGrid>
+        <GridContainer>
+          <NoticesGrid />
+        </GridContainer>
       </ProfileContent>
     </Container>
   );
