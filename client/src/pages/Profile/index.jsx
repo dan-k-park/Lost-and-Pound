@@ -28,6 +28,10 @@ const BioContainer = styled.div`
     padding: 0;
     height: 220px;
   }
+
+  @media only Screen and (max-width: 320px) {
+    flex-direction: column;
+  }
 `;
 
 const AvatarWrapper = styled.div`
@@ -42,6 +46,12 @@ const AvatarWrapper = styled.div`
     margin-left: 10px;
     flex: 2;
     justify-content: flex-start;
+  }
+
+  @media only Screen and (max-width: 320px) {
+    margin: 0;
+    padding-top: 10px;
+    justify-content: center;
   }
 `;
 
@@ -67,6 +77,12 @@ const InfoContainer = styled.div`
     padding: 20px 0 0 20px;
     position: relative;
   }
+
+  @media only Screen and (max-width: 320px) {
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 const TopLine = styled.div`
@@ -79,6 +95,12 @@ const TopLine = styled.div`
     flex-direction: column;
     align-items: flex-start;
     justify-content: space-between;
+  }
+
+  @media only Screen and (max-width: 320px) {
+    margin: 0;
+    width: 80%;
+    align-items: center;
   }
 `;
 
@@ -157,6 +179,10 @@ const BottomLine = styled.div`
     position: absolute;
     top: 150px;
     left: calc(-90vw + 90%);
+  }
+
+  @media only Screen and (max-width: 320px) {
+    display: none;
   }
 `;
 

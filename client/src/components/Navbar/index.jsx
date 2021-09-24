@@ -125,6 +125,9 @@ const NavIcon = styled.div`
   margin-right: 15px;
   cursor: pointer;
   position: relative;
+  @media only Screen and (max-width: 320px) {
+    display: none;
+  }
 `;
 
 const IconBadge = styled.span`
