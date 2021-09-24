@@ -104,7 +104,7 @@ const MobileLogistics = styled.ul`
     align-items: center;
     width: 100%;
     border-style: solid none solid none;
-    border-width: thin;
+    border-width: 1.5px;
     border-color: #dbdbdb;
     height: 70px;
   }
