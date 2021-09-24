@@ -8,6 +8,7 @@ import { BsEye } from "react-icons/bs";
 const Container = styled.div`
   width: 100%;
   display: flex;
+  flex-direction: column;
   border-top: solid;
   border-width: 1.5px;
   border-color: #dbdbdb;
@@ -46,15 +47,23 @@ const Label = styled.div`
   }
 `;
 
+const GridContainer = styled.div`
+  height: 100vh;
+  background-color: blue;
+`;
+
 const NoticesGrid = () => {
-  const [toggleTab, setToggleTab] = useState(1);
+  const [toggleState, setToggleState] = useState(1);
+
+  const toggleTab = (index) => {
+    setToggleState(index);
+  };
 
   return (
     <IconContext.Provider
       value={{
         style: {
           verticalAlign: "middle",
-          color: "#919191",
           fontSize: `${useWindowSize().width > 768 ? "20px" : "30px"}`,
           marginRight: "6px",
         },
@@ -62,19 +71,41 @@ const NoticesGrid = () => {
     >
       <Container>
         <Tabs>
-          <Tab>
+          <Tab
+            style={{
+              color: `${toggleState === 1 ? "#000" : "#919191"}`,
+              borderTop: `${toggleState === 1 ? "1.5px solid #000" : ""}`,
+              marginTop: `${toggleState === 1 ? "-1.5px" : ""}`,
+            }}
+            onClick={() => toggleTab(1)}
+          >
             <MdGridOn />
             <Label>Notices</Label>
           </Tab>
-          <Tab>
+          <Tab
+            style={{
+              color: `${toggleState === 2 ? "#000" : "#919191"}`,
+              borderTop: `${toggleState === 2 ? "1.5px solid #000" : ""}`,
+              marginTop: `${toggleState === 2 ? "-1.5px" : ""}`,
+            }}
+            onClick={() => toggleTab(2)}
+          >
             <BsEye />
             <Label>Looking</Label>
           </Tab>
-          <Tab>
+          <Tab
+            style={{
+              color: `${toggleState === 3 ? "#000" : "#919191"}`,
+              borderTop: `${toggleState === 3 ? "1.5px solid #000" : ""}`,
+              marginTop: `${toggleState === 3 ? "-1.5px" : ""}`,
+            }}
+            onClick={() => toggleTab(3)}
+          >
             <MdBookmarkBorder />
             <Label>Found</Label>
           </Tab>
         </Tabs>
+        <GridContainer>hi</GridContainer>
       </Container>
     </IconContext.Provider>
   );

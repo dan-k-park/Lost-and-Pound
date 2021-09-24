@@ -65,6 +65,11 @@ const Avatar = styled.img`
     width: 100px;
     height: 100px;
   }
+
+  @media only Screen and (max-width: 320px) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 const InfoContainer = styled.div`
