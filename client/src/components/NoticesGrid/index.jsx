@@ -48,23 +48,68 @@ const Label = styled.div`
   }
 `;
 
-const GridContainer = styled.div`
-  height: 100vh;
+const ContentContainer = styled.div`
   width: 100%;
 `;
 
 const Grid = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 3px;
   background-color: red;
 `;
 
-const dummyNotices = [];
-const dummyLooking = [];
-const dummyFound = [];
+const ImageBlock = styled.img`
+  width: 150px;
+  height: 150px;
+  object-fit: fill;
+`;
+
+const dummyNotices = [
+  {
+    img: "https://www.boredpanda.com/blog/wp-content/uploads/2018/03/ugly-medieval-cats-art-105-5aafb04871c4f__700.jpg",
+    seachers: 0,
+  },
+];
+const dummyLooking = [
+  {
+    img: "http://static.demilked.com/wp-content/uploads/2018/03/5abc8faf8f5ff-ugly-medieval-cats-art-103-5aafaff5c7b63__700.jpg",
+    searchers: 1,
+  },
+  { img: "https://pbs.twimg.com/media/EMc9HA1UYAETNsV.jpg", searchers: 5 },
+  {
+    img: "https://i.pinimg.com/474x/af/7c/07/af7c07f8dfe5ab8e0a0e6c3a9296c6ef.jpg",
+    searchers: 3,
+  },
+  {
+    img: "https://cdn.shopify.com/s/files/1/0344/6469/files/ugly-cat-paintings-10.jpg?v=1531239933",
+    searchers: 2,
+  },
+  {
+    img: "https://64.media.tumblr.com/5a5e64aaef56135f2d04379e8ea6fc90/tumblr_ppvfyrvHSW1x4gx38o1_1280.jpg",
+    searchers: 1,
+  },
+  ,
+];
+const dummyFound = [
+  {
+    img: "https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/1/a-pig-in-its-sty-e-m-fox.jpg",
+    seachers: 0,
+  },
+  {
+    img: "https://i.pinimg.com/originals/4d/05/84/4d0584628e3abf99e028e8bb87098ac2.jpg",
+    searchers: 0,
+  },
+];
 
 const NoticesGrid = () => {
   const [toggleState, setToggleState] = useState(1);
   const toggleTab = (index) => {
     setToggleState(index);
+  };
+
+  const renderContent = (contentArr) => {
+    return contentArr.map((content) => <ImageBlock src={content.img} />);
   };
 
   return (
@@ -113,17 +158,17 @@ const NoticesGrid = () => {
             <Label>Found</Label>
           </Tab>
         </Tabs>
-        <GridContainer>
+        <ContentContainer>
           <Grid style={{ display: `${toggleState === 1 ? "grid" : "none"}` }}>
-            Notices
+            {renderContent(dummyNotices)}
           </Grid>
           <Grid style={{ display: `${toggleState === 2 ? "grid" : "none"}` }}>
-            Looking
+            {renderContent(dummyLooking)}
           </Grid>
           <Grid style={{ display: `${toggleState === 3 ? "grid" : "none"}` }}>
-            Found
+            {renderContent(dummyFound)}
           </Grid>
-        </GridContainer>
+        </ContentContainer>
       </Container>
     </IconContext.Provider>
   );
