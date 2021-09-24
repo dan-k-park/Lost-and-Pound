@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 import styled from "styled-components";
 import { IconContext } from "react-icons/lib";
-import { MdGridOn, MdBookmarkBorder } from "react-icons/md";
+import { MdGridOn, MdBookmarkBorder, MdGroup } from "react-icons/md";
 import { BsEye } from "react-icons/bs";
 
 const Container = styled.div`
@@ -55,20 +55,48 @@ const ContentContainer = styled.div`
 const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 3px;
-  background-color: red;
+  justify-content: space-between;
+  // background-color: red;
+`;
+
+const Overlay = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.5s ease;
+  opacity: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
 `;
 
 const ImageBlock = styled.img`
-  width: 150px;
-  height: 150px;
+  width: 350px;
+  height: 350px;
   object-fit: fill;
+  background-color: #000;
+`;
+
+const ImageContainer = styled.div`
+  position: relative;
+  background-color: #000;
+  &:hover ${Overlay} {
+    opacity: 1;
+  }
+  &:hover ${ImageBlock} {
+    opacity: 0.5;
+  }
 `;
 
 const dummyNotices = [
   {
     img: "https://www.boredpanda.com/blog/wp-content/uploads/2018/03/ugly-medieval-cats-art-105-5aafb04871c4f__700.jpg",
-    seachers: 0,
+    searchers: 0,
   },
 ];
 const dummyLooking = [
@@ -94,7 +122,7 @@ const dummyLooking = [
 const dummyFound = [
   {
     img: "https://render.fineartamerica.com/images/images-profile-flow/400/images/artworkimages/mediumlarge/1/a-pig-in-its-sty-e-m-fox.jpg",
-    seachers: 0,
+    searchers: 0,
   },
   {
     img: "https://i.pinimg.com/originals/4d/05/84/4d0584628e3abf99e028e8bb87098ac2.jpg",
@@ -109,7 +137,14 @@ const NoticesGrid = () => {
   };
 
   const renderContent = (contentArr) => {
-    return contentArr.map((content) => <ImageBlock src={content.img} />);
+    return contentArr.map((content) => (
+      <ImageContainer>
+        <ImageBlock src={content.img} />
+        <Overlay>
+          <MdGroup style={{ fontSize: "28px" }} /> {content.searchers}
+        </Overlay>
+      </ImageContainer>
+    ));
   };
 
   return (
