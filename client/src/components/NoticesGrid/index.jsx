@@ -54,9 +54,10 @@ const ContentContainer = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 400px 400px 400px;
+  grid-template-columns: 400px 400px 400px;
   justify-content: space-between;
-  // background-color: red;
+  gap: 20px 20px;
 `;
 
 const Overlay = styled.div`
@@ -76,8 +77,8 @@ const Overlay = styled.div`
 `;
 
 const ImageBlock = styled.img`
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   object-fit: fill;
   background-color: #000;
 `;
@@ -85,6 +86,7 @@ const ImageBlock = styled.img`
 const ImageContainer = styled.div`
   position: relative;
   background-color: #000;
+  cursor: pointer;
   &:hover ${Overlay} {
     opacity: 1;
   }
