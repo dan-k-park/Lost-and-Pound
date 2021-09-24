@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import useWindowSize from "../../hooks/useWindowSize";
 import styled from "styled-components";
 import { IconContext } from "react-icons/lib";
-import { MdGridOn, MdBookmarkBorder, MdPersonPin } from "react-icons/md";
+import { MdGridOn, MdBookmarkBorder } from "react-icons/md";
 import { BsEye } from "react-icons/bs";
 
 const Container = styled.div`
@@ -13,6 +13,7 @@ const Container = styled.div`
   border-width: 1.5px;
   border-color: #dbdbdb;
   justify-content: center;
+  align-items: center;
 
   @media only Screen and (max-width: 768px) {
     border-top: none;
@@ -49,12 +50,19 @@ const Label = styled.div`
 
 const GridContainer = styled.div`
   height: 100vh;
-  background-color: blue;
+  width: 100%;
 `;
+
+const Grid = styled.div`
+  background-color: red;
+`;
+
+const dummyNotices = [];
+const dummyLooking = [];
+const dummyFound = [];
 
 const NoticesGrid = () => {
   const [toggleState, setToggleState] = useState(1);
-
   const toggleTab = (index) => {
     setToggleState(index);
   };
@@ -105,7 +113,17 @@ const NoticesGrid = () => {
             <Label>Found</Label>
           </Tab>
         </Tabs>
-        <GridContainer>hi</GridContainer>
+        <GridContainer>
+          <Grid style={{ display: `${toggleState === 1 ? "grid" : "none"}` }}>
+            Notices
+          </Grid>
+          <Grid style={{ display: `${toggleState === 2 ? "grid" : "none"}` }}>
+            Looking
+          </Grid>
+          <Grid style={{ display: `${toggleState === 3 ? "grid" : "none"}` }}>
+            Found
+          </Grid>
+        </GridContainer>
       </Container>
     </IconContext.Provider>
   );
