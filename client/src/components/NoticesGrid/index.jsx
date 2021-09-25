@@ -58,7 +58,7 @@ const Grid = styled.div`
   grid-template-rows: repeat(3, 267px);
   width: 100%;
   margin: 0 auto;
-  gap: 3px 3px;
+  gap: 21px 21px;
 
   @media only Screen and (max-width: 992px) {
     grid-template-columns: repeat(3, calc((85vw - 42px) / 3));
@@ -72,6 +72,7 @@ const Grid = styled.div`
 
     grid-template-columns: repeat(3, calc((100vw - 6px) / 3));
     grid-template-rows: repeat(3, calc((100vw - 6px) / 3));
+    gap: 3px 3px;
   }
 `;
 
