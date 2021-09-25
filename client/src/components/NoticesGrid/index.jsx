@@ -58,7 +58,21 @@ const Grid = styled.div`
   grid-template-rows: repeat(3, 267px);
   width: 100%;
   margin: 0 auto;
-  gap: 21px 21px;
+  gap: 3px 3px;
+
+  @media only Screen and (max-width: 992px) {
+    grid-template-columns: repeat(3, calc((85vw - 42px) / 3));
+    grid-template-rows: repeat(3, calc((85vw - 42px) / 3));
+  }
+
+  @media only Screen and (max-width: 768px) {
+    border-top: solid;
+    border-width: 1.5px;
+    border-color: #dbdbdb;
+
+    grid-template-columns: repeat(3, calc((100vw - 6px) / 3));
+    grid-template-rows: repeat(3, calc((100vw - 6px) / 3));
+  }
 `;
 
 const Overlay = styled.div`
@@ -78,14 +92,24 @@ const Overlay = styled.div`
 `;
 
 const ImageBlock = styled.img`
-  // 843 is the max width of the profile container and then substract the gap sizes
+  // 843px is the max width
+  // gap size is 21px so that gives 801px of usable space since there are two gaps per column
+  // 801 divided by 3 is 267px, so that is our pixel width
   width: 267px;
   height: 267px;
   object-fit: fill;
   background-color: #000;
 
   @media only Screen and (max-width: 992px) {
-    display: none;
+    // 85vw is the max width
+    width: calc((85vw - 42px) / 3);
+    height: calc((85vw - 42px) / 3);
+  }
+
+  @media only Screen and (max-width: 768px) {
+    // 85vw is the max width
+    width: calc((100vw - 6px) / 3);
+    height: calc((100vw - 6px) / 3);
   }
 `;
 
@@ -125,7 +149,6 @@ const dummyLooking = [
     img: "https://64.media.tumblr.com/5a5e64aaef56135f2d04379e8ea6fc90/tumblr_ppvfyrvHSW1x4gx38o1_1280.jpg",
     searchers: 1,
   },
-  ,
 ];
 const dummyFound = [
   {
