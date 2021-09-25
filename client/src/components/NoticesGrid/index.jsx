@@ -54,10 +54,9 @@ const ContentContainer = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-rows: 400px 400px 400px;
-  grid-template-columns: 400px 400px 400px;
-  justify-content: space-between;
-  gap: 20px 20px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+  margin: 0 auto;
 `;
 
 const Overlay = styled.div`
@@ -77,8 +76,8 @@ const Overlay = styled.div`
 `;
 
 const ImageBlock = styled.img`
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
   object-fit: fill;
   background-color: #000;
 `;

@@ -11,6 +11,8 @@ const Container = styled.div`
 
 const ProfileContent = styled.div`
   width: 85%;
+  // width when vw hits 992px breakpoint
+  max-width: 843px;
   display: flex;
   flex-direction: column;
 
