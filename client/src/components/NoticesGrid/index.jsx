@@ -54,9 +54,11 @@ const ContentContainer = styled.div`
 
 const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(3, 267px);
+  grid-template-rows: repeat(3, 267px);
   width: 100%;
   margin: 0 auto;
+  gap: 21px 21px;
 `;
 
 const Overlay = styled.div`
@@ -76,10 +78,15 @@ const Overlay = styled.div`
 `;
 
 const ImageBlock = styled.img`
-  width: 100%;
-  height: 100%;
+  // 843 is the max width of the profile container and then substract the gap sizes
+  width: 267px;
+  height: 267px;
   object-fit: fill;
   background-color: #000;
+
+  @media only Screen and (max-width: 992px) {
+    display: none;
+  }
 `;
 
 const ImageContainer = styled.div`
