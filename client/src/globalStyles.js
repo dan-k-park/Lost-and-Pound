@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
+:root {
+  --backgroundColor: #fafafa;
+  --borderColor: #dbdbdb;
+  --submitButton: #0195f6;
+}
 html {
   scroll-behavior: smooth;
 }
@@ -17,6 +22,6 @@ body {
   border: 0;
   outline: 0;
   overflow-x: hidden;
-  background-color: #fafafa;
+  background-color: var(--background);
 }
 `;

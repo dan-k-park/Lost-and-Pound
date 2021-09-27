@@ -10,7 +10,7 @@ import {
 const Container = styled.div`
   width: 100%;
   border-radius: 10px;
-  border: thin solid #dbdbdb;
+  border: thin solid var(--borderColor);
 `;
 
 const Wrapper = styled.div`
@@ -75,14 +75,14 @@ const Species = styled.select`
   padding: 5px;
   font-size: 14px;
   border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
+  border-width: 1.5px;
+  border-color: var(--borderColor);
   border-radius: 3px;
-  background-color: #fafafa;
+  background-color: var(--backgroundColor);
   color: #747474;
   option {
-    color: black;
-    background: #fafafa;
+    color: #747474;
+    background: var(--backgroundColor);
     display: flex;
     white-space: pre;
     min-height: 20px;
@@ -95,10 +95,10 @@ const Species = styled.select`
 
 const Description = styled.textarea`
   border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
+  border-width: 1.5px;
+  border-color: var(--borderColor);
   border-radius: 3px;
-  background-color: #fafafa;
+  background-color: var(--backgroundColor);
   resize: none;
   width: 80%;
   height: 84px;
@@ -116,10 +116,10 @@ const Description = styled.textarea`
 
 const Name = styled.input`
   border: solid;
-  border-width: thin;
-  border-color: #dbdbdb;
+  border-width: 1.5px;
+  border-color: var(--borderColor);
   border-radius: 3px;
-  background-color: #fafafa;
+  background-color: var(--backgroundColor);
   padding: 5px;
   font-size: 14px;
   width: 80%;
@@ -181,7 +181,7 @@ const CreateButton = styled.button`
   padding: 8px 8px 8px 8px;
   border-radius: 5px;
   border: none;
-  background-color: #0195f6;
+  background-color: var(--submitButton);
   font-weight: 500;
   margin-right: 20px;
   cursor: pointer;

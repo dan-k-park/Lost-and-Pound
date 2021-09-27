@@ -134,7 +134,7 @@ const MobileLogistics = styled.ul`
     width: 100%;
     border-style: solid none solid none;
     border-width: 1.5px;
-    border-color: #dbdbdb;
+    border-color: var(--borderColor);
     height: 70px;
   }
 `;
@@ -160,7 +160,7 @@ const Username = styled.span`
 const EditProfileButton = styled.button`
   padding: 9px 8px 9px 8px;
   border-radius: 5px;
-  border: 1.5px solid #dbdbdb;
+  border: 1.5px solid var(--borderColor);
   background-color: #fafafa;
   margin: 0 0 10px 50px;
   cursor: pointer;
