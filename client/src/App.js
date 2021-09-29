@@ -16,7 +16,6 @@ const LoginContainer = () => (
 const DefaultContainer = () => (
   <>
     <Navbar />
-
     <Route exact path="/">
       <Home />
     </Route>

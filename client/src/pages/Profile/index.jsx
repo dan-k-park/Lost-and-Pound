@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import NoticesGrid from "../../components/NoticesGrid";
+import Modal from "react-modal";
 
 const Container = styled.div`
   display: flex;
@@ -214,6 +215,43 @@ const Location = styled.p`
 `;
 
 const Profile = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const RenderFriendsModal = () => {
+    return (
+      <Modal
+        isOpen={openModal}
+        ariaHideApp={false}
+        onRequestClose={() => setOpenModal(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            margin: "auto",
+            height: "300px",
+            width: "300px",
+            display: "flex",
+            justifyContent: "center",
+            border: "1px solid #dbdbdb",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+          },
+        }}
+      >
+        <h2>Friends</h2>
+      </Modal>
+    );
+  };
+
   return (
     <Container>
       <ProfileContent>
@@ -230,7 +268,7 @@ const Profile = () => {
               <Logistics>
                 <b>1</b> notice
               </Logistics>
-              <Logistics onClick={() => console.log("Open a modal here")}>
+              <Logistics onClick={() => setOpenModal(true)}>
                 <b>3</b> friends
               </Logistics>
             </MiddleLine>
@@ -249,7 +287,7 @@ const Profile = () => {
               notice
             </span>
           </Logistics>
-          <Logistics onClick={() => console.log("Open a modal here")}>
+          <Logistics onClick={() => setOpenModal(true)}>
             <b>3</b>
             <span
               style={{ display: "block", marginTop: "4px", color: "#8e8e8e" }}
@@ -262,6 +300,7 @@ const Profile = () => {
           <NoticesGrid />
         </GridContainer>
       </ProfileContent>
+      {RenderFriendsModal()}
     </Container>
   );
 };

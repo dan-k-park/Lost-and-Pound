@@ -6,6 +6,7 @@ import {
   MdDateRange,
   MdAddLocation,
 } from "react-icons/md";
+import Modal from "react-modal";
 
 const Container = styled.div`
   width: 100%;
@@ -195,6 +196,8 @@ const CreateNotice = () => {
   const name = useRef();
   const [file, setFile] = useState(null);
   const [calendarPosition, setCalendarPosition] = useState({});
+  const [openModal, setOpenModal] = useState(false);
+  const [openMapModal, setOpenMapModal] = useState(false);
 
   const handleCalendarClick = (e) => {
     setCalendarPosition({
@@ -205,6 +208,75 @@ const CreateNotice = () => {
 
   const handleCalendarChange = () => {
     setCalendarPosition({});
+  };
+
+  const RenderReviewModal = () => {
+    return (
+      <Modal
+        isOpen={openModal}
+        ariaHideApp={false}
+        onRequestClose={() => setOpenModal(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            margin: "auto",
+            height: "300px",
+            width: "300px",
+            display: "flex",
+            justifyContent: "center",
+            border: "1px solid #dbdbdb",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+          },
+        }}
+      >
+        <h2>Review Modal</h2>
+      </Modal>
+    );
+  };
+  const RenderMapModal = () => {
+    return (
+      <Modal
+        isOpen={openMapModal}
+        ariaHideApp={false}
+        onRequestClose={() => setOpenMapModal(false)}
+        style={{
+          overlay: {
+            position: "fixed",
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: "rgba(255, 255, 255, 0.75)",
+          },
+          content: {
+            margin: "auto",
+            height: "300px",
+            width: "300px",
+            display: "flex",
+            justifyContent: "center",
+            border: "1px solid #dbdbdb",
+            background: "#fff",
+            overflow: "auto",
+            WebkitOverflowScrolling: "touch",
+            borderRadius: "4px",
+            outline: "none",
+          },
+        }}
+      >
+        <h2>Map Modal</h2>
+      </Modal>
+    );
   };
 
   return (
@@ -288,12 +360,16 @@ const CreateNotice = () => {
               <MdAddLocation
                 style={{ fontSize: "18px", marginRight: "3px", color: "green" }}
               />
-              <OptionText>Location</OptionText>
+              <OptionText onClick={() => setOpenMapModal(true)}>
+                Location
+              </OptionText>
             </Option>
           </Options>
-          <CreateButton type="submit">Post</CreateButton>
+          <CreateButton onClick={() => setOpenModal(true)}>Review</CreateButton>
         </Form>
       </Wrapper>
+      {RenderReviewModal()}
+      {RenderMapModal()}
     </Container>
   );
 };

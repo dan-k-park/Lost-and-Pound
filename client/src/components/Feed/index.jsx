@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Notice from "../Notice";
 import CreateNotice from "../CreateNotice";
+import Modal from "react-modal";
 
 const Container = styled.div`
   flex: 5.5;
