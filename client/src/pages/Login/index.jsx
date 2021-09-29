@@ -8,7 +8,7 @@ const Container = styled.div`
   justify-content: center;
   align-items: flex-start;
   margin-top: 50px;
-  sco
+  background-color: var(--backgroundColor);
 `;
 
 const LoginContainer = styled.div`
@@ -60,6 +60,11 @@ const LoginInput = styled.input`
 
   &:first-child {
     margin-bottom: 10px;
+  }
+
+  &:focus {
+    border-color: #000;
+    outline: none;
   }
 `;
 

@@ -36,13 +36,11 @@ const InputsWrapper = styled.div`
   align-items: center;
   height: 100px;
   width: 90%;
-
   @media only Screen and (max-width: 960px) {
     flex-direction: column;
     align-items: flex-end
     gap: 10px;
   }
-
   @media only Screen and (max-width: 640px) {
     gap: 10px;
       margin-bottom: 10px;
@@ -61,7 +59,6 @@ const ShorterInputs = styled.div`
     align-items: center;
     gap: 10px;
   }
-
   @media only Screen and (max-width: 640px) {
     width: 80%;
     flex-direction: column;
@@ -104,7 +101,6 @@ const Description = styled.textarea`
   height: 84px;
   padding: 10px;
   font-size: 14px;
-
   &:focus {
     outline: none;
   }
@@ -123,7 +119,6 @@ const Name = styled.input`
   padding: 5px;
   font-size: 14px;
   width: 80%;
-
   &:focus {
     outline: none;
   }
@@ -171,7 +166,6 @@ const Option = styled.label`
 const OptionText = styled.span`
   font-size: clamp(11px, 1.1vw, 14px);
   font-weight: 500;
-
   @media only Screen and (max-width: 960px) {
     display: none;
   }
@@ -196,11 +190,22 @@ const Divider = styled.hr`
   border-width: thin;
   border-color: #dbdbdb;
 `;
-
 const CreateNotice = () => {
   const description = useRef();
   const name = useRef();
   const [file, setFile] = useState(null);
+  const [calendarPosition, setCalendarPosition] = useState({});
+
+  const handleCalendarClick = (e) => {
+    setCalendarPosition({
+      x: e.pageX,
+      y: e.pageY,
+    });
+  };
+
+  const handleCalendarChange = () => {
+    setCalendarPosition({});
+  };
 
   return (
     <Container>
@@ -266,7 +271,18 @@ const CreateNotice = () => {
                 style={{ fontSize: "18px", marginRight: "3px", color: "blue" }}
               />
               <OptionText>Last Seen</OptionText>
-              <input type="date" style={{ display: "none" }} />
+              <input
+                type="date"
+                style={{
+                  opacity: 0,
+                  zIndex: -10,
+                  position: "absolute",
+                  top: `${calendarPosition.x}`,
+                  left: `${calendarPosition.y}`,
+                }}
+                onClick={handleCalendarClick}
+                onChange={handleCalendarChange}
+              />
             </Option>
             <Option>
               <MdAddLocation
