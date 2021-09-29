@@ -172,7 +172,7 @@ const OptionText = styled.span`
   }
 `;
 
-const CreateButton = styled.button`
+const CreateButton = styled.span`
   padding: 8px 8px 8px 8px;
   border-radius: 5px;
   border: none;
