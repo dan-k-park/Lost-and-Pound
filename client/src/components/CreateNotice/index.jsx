@@ -6,6 +6,7 @@ import {
   MdDateRange,
   MdAddLocation,
 } from "react-icons/md";
+import Map from "../Map";
 import Modal from "react-modal";
 
 const Container = styled.div`
@@ -111,7 +112,7 @@ const Description = styled.textarea`
   }
 `;
 
-const Name = styled.input`
+const Input = styled.input`
   border: solid;
   border-width: 1.5px;
   border-color: var(--borderColor);
@@ -144,12 +145,15 @@ const Cancel = styled(MdCancel)`
   right: 20;
   cursor: pointer;
   opacity: 0.7;
+  font-size: 24px;
 `;
 
 const Form = styled.form`
   display: flex;
+  flex-direction: ${(props) => (props.locationForm ? "column" : "row")};
   align-items: center;
-  justify-content: space-between;
+  justify-content: ${(props) =>
+    props.locationForm ? "center" : "space-between"};
 `;
 
 const Options = styled.div`
@@ -172,9 +176,9 @@ const OptionText = styled.span`
   }
 `;
 
-const CreateButton = styled.span`
+const CreateButton = styled.button`
   padding: 8px 8px 8px 8px;
-  border-radius: 5px;
+  border-radius: 4px;
   border: none;
   background-color: var(--submitButton);
   font-weight: 500;
@@ -195,6 +199,7 @@ const CreateNotice = () => {
   const description = useRef();
   const name = useRef();
   const [file, setFile] = useState(null);
+  const [location, setLocation] = useState("");
   const [calendarPosition, setCalendarPosition] = useState({});
   const [openModal, setOpenModal] = useState(false);
   const [openMapModal, setOpenMapModal] = useState(false);
@@ -210,40 +215,6 @@ const CreateNotice = () => {
     setCalendarPosition({});
   };
 
-  const RenderReviewModal = () => {
-    return (
-      <Modal
-        isOpen={openModal}
-        ariaHideApp={false}
-        onRequestClose={() => setOpenModal(false)}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(255, 255, 255, 0.75)",
-          },
-          content: {
-            margin: "auto",
-            height: "300px",
-            width: "300px",
-            display: "flex",
-            justifyContent: "center",
-            border: "1px solid #dbdbdb",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-          },
-        }}
-      >
-        <h2>Review Modal</h2>
-      </Modal>
-    );
-  };
   const RenderMapModal = () => {
     return (
       <Modal
@@ -261,8 +232,8 @@ const CreateNotice = () => {
           },
           content: {
             margin: "auto",
-            height: "300px",
-            width: "300px",
+            height: "500px",
+            width: "500px",
             display: "flex",
             justifyContent: "center",
             border: "1px solid #dbdbdb",
@@ -274,9 +245,18 @@ const CreateNotice = () => {
           },
         }}
       >
-        <h2>Map Modal</h2>
+        <Form locationForm>
+          <Input placeholder="Street Adress or Neighborhood" />
+          <Input placeholder="City" />
+        </Form>
       </Modal>
     );
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    const newNotice = {};
   };
 
   return (
@@ -289,7 +269,7 @@ const CreateNotice = () => {
           />
           <InputsWrapper>
             <ShorterInputs>
-              <Name placeholder="Name" ref={name} />
+              <Input placeholder="Name" ref={name} />
               <Species>
                 <option value="" hidden>
                   Species
@@ -319,7 +299,7 @@ const CreateNotice = () => {
             <Cancel onClick={() => setFile(null)} />
           </ImageContainer>
         )}
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Options>
             <Option htmlFor="file">
               <MdPermMedia
@@ -365,10 +345,9 @@ const CreateNotice = () => {
               </OptionText>
             </Option>
           </Options>
-          <CreateButton onClick={() => setOpenModal(true)}>Review</CreateButton>
+          <CreateButton onClick={() => console.log("hello")}>Post</CreateButton>
         </Form>
       </Wrapper>
-      {RenderReviewModal()}
       {RenderMapModal()}
     </Container>
   );
