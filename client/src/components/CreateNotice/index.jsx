@@ -34,6 +34,8 @@ const UserAvatar = styled.img`
 const InfoInputsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: space-between;
+  justify-content: space-between;
   height: 200px;
   width: 90%;
   @media only Screen and (max-width: 960px) {
@@ -59,18 +61,18 @@ const ShorterInputs = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   height: 100%;
-  @media only Screen and (max-width: 960px) {
-    width: 80%;
-    flex-direction: row;
-    align-items: center;
-    gap: 10px;
-  }
-  @media only Screen and (max-width: 640px) {
-    width: 80%;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-  }
+  // @media only Screen and (max-width: 960px) {
+  //   width: 80%;
+  //   flex-direction: row;
+  //   align-items: center;
+  //   gap: 10px;
+  // }
+  // @media only Screen and (max-width: 640px) {
+  //   width: 80%;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   width: 100%;
+  // }
 `;
 
 const Species = styled.select`
