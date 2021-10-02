@@ -6,7 +6,6 @@ import {
   MdDateRange,
   MdAddLocation,
 } from "react-icons/md";
-import Map from "../Map";
 import Modal from "react-modal";
 
 const Container = styled.div`
@@ -32,11 +31,10 @@ const UserAvatar = styled.img`
   object-fit: cover;
 `;
 
-const InputsWrapper = styled.div`
+const InfoInputsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100px;
+  flex-direction: column;
+  height: 200px;
   width: 90%;
   @media only Screen and (max-width: 960px) {
     flex-direction: column;
@@ -47,6 +45,12 @@ const InputsWrapper = styled.div`
     gap: 10px;
       margin-bottom: 10px;
   }
+`;
+
+const DescriptiveInputs = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 const ShorterInputs = styled.div`
@@ -149,11 +153,12 @@ const Cancel = styled(MdCancel)`
 `;
 
 const Form = styled.form`
+  width: 90%;
   display: flex;
   flex-direction: ${(props) => (props.locationForm ? "column" : "row")};
   align-items: center;
   justify-content: ${(props) =>
-    props.locationForm ? "center" : "space-between"};
+    props.locationForm ? "flex-start" : "space-between"};
 `;
 
 const Options = styled.div`
@@ -198,11 +203,9 @@ const Divider = styled.hr`
 const CreateNotice = () => {
   const description = useRef();
   const name = useRef();
+  const location = useRef();
   const [file, setFile] = useState(null);
-  const [location, setLocation] = useState("");
   const [calendarPosition, setCalendarPosition] = useState({});
-  const [openModal, setOpenModal] = useState(false);
-  const [openMapModal, setOpenMapModal] = useState(false);
 
   const handleCalendarClick = (e) => {
     setCalendarPosition({
@@ -213,44 +216,6 @@ const CreateNotice = () => {
 
   const handleCalendarChange = () => {
     setCalendarPosition({});
-  };
-
-  const RenderMapModal = () => {
-    return (
-      <Modal
-        isOpen={openMapModal}
-        ariaHideApp={false}
-        onRequestClose={() => setOpenMapModal(false)}
-        style={{
-          overlay: {
-            position: "fixed",
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            backgroundColor: "rgba(255, 255, 255, 0.75)",
-          },
-          content: {
-            margin: "auto",
-            height: "500px",
-            width: "500px",
-            display: "flex",
-            justifyContent: "center",
-            border: "1px solid #dbdbdb",
-            background: "#fff",
-            overflow: "auto",
-            WebkitOverflowScrolling: "touch",
-            borderRadius: "4px",
-            outline: "none",
-          },
-        }}
-      >
-        <Form locationForm>
-          <Input placeholder="Street Adress or Neighborhood" />
-          <Input placeholder="City" />
-        </Form>
-      </Modal>
-    );
   };
 
   const handleSubmit = async (e) => {
@@ -267,27 +232,33 @@ const CreateNotice = () => {
             src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Pseudobiceros_hancockanus.jpg"
             alt="User profile picture."
           />
-          <InputsWrapper>
-            <ShorterInputs>
-              <Input placeholder="Name" ref={name} />
-              <Species>
-                <option value="" hidden>
-                  Species
-                </option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="rabbit">Rabbit</option>
-                <option value="hamster">Hamster</option>
-                <option value="tortoise">Tortoise</option>
-                <option value="other">Other</option>
-              </Species>
-            </ShorterInputs>
-            <Description
-              placeholder="Describe your pet here"
-              maxLength="150"
-              ref={description}
+          <InfoInputsContainer>
+            <DescriptiveInputs>
+              <ShorterInputs>
+                <Input placeholder="Name" ref={name} />
+                <Species>
+                  <option value="" hidden>
+                    Species
+                  </option>
+                  <option value="dog">Dog</option>
+                  <option value="cat">Cat</option>
+                  <option value="rabbit">Rabbit</option>
+                  <option value="hamster">Hamster</option>
+                  <option value="tortoise">Tortoise</option>
+                  <option value="other">Other</option>
+                </Species>
+              </ShorterInputs>
+              <Description
+                placeholder="Describe your pet here"
+                maxLength="150"
+                ref={description}
+              />
+            </DescriptiveInputs>
+            <Input
+              placeholder="Street/neighborhood and City where your pet was last seen"
+              ref={location}
             />
-          </InputsWrapper>
+          </InfoInputsContainer>
         </TopHalf>
         <Divider />
         {file && (
@@ -336,19 +307,10 @@ const CreateNotice = () => {
                 onChange={handleCalendarChange}
               />
             </Option>
-            <Option>
-              <MdAddLocation
-                style={{ fontSize: "18px", marginRight: "3px", color: "green" }}
-              />
-              <OptionText onClick={() => setOpenMapModal(true)}>
-                Location
-              </OptionText>
-            </Option>
           </Options>
           <CreateButton onClick={() => console.log("hello")}>Post</CreateButton>
         </Form>
       </Wrapper>
-      {RenderMapModal()}
     </Container>
   );
 };
