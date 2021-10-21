@@ -4,7 +4,7 @@ import {
   MdCancel,
   MdPermMedia,
   MdDateRange,
-  MdAddLocation,
+  MdAddCircle,
 } from "react-icons/md";
 import Modal from "react-modal";
 
